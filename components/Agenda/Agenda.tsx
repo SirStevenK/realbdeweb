@@ -4,6 +4,7 @@ import fontFamily from "@/styles/fontFamily.json";
 import { AgendaEvents } from "@/types/utils";
 import { listMonthsFR } from "@/types/date";
 import { Fragment, useMemo } from "react";
+import mq from "@/styles/mq";
 
 const Wrapper = styled.div({
   maxWidth: "800px",
@@ -88,7 +89,10 @@ const MonthElement = styled.div({
     flexShrink: 0,
     color: colors.primary,
     fontFamily: fontFamily.display.join(","),
-    fontSize: "1.1rem",
+    fontSize: "1.0rem",
+    [mq[0]]: {
+      fontSize: "1.1rem",
+    },
     fontWeight: "bold",
     lineHeight: "1.5rem",
     width: "83px",
@@ -98,6 +102,10 @@ const MonthElement = styled.div({
     marginLeft: "36px",
     color: colors.dark,
     fontFamily: fontFamily.body.join(","),
+    fontSize: "0.9rem",
+    [mq[0]]: {
+      fontSize: "1.0rem",
+    },
   },
 });
 
@@ -149,12 +157,9 @@ const Agenda: React.FC = () => {
     return [date.getFullYear(), date.getMonth()];
   }, []);
   return (
-    <div className="bg-background-1 flex justify-center items-center pt-4">
+    <div className="flex justify-center items-center pt-4">
       <Wrapper className="flex flex-col items-center rounded-lg overflow-hidden">
         <div>
-          {/* <YearElement>
-            <span className="year font-display uppercase">Calendrier</span>
-          </YearElement> */}
           {agendaEvents.map((listY, indexY) => (
             <Fragment key={listY.year}>
               <YearElement>
@@ -182,7 +187,7 @@ const Agenda: React.FC = () => {
                   >
                     <div className="border-point">
                       <div className="point" />
-                      <i className="fas fa-check icon" />
+                      <i className="fas fa-check icon" aria-hidden />
                     </div>
                   </WrapperPoint>
                   <span className="event">{listM.events[0].name}</span>

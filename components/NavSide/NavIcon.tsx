@@ -18,7 +18,11 @@ const NavIcon: React.FC<Props> = ({ icon }) => {
         width: "36px",
       }}
     >
-      <i className={`${icon} text-lg text-light`} aria-hidden />
+      <i
+        className={`${icon} text-lg`}
+        style={{ color: "#7E8CA6" }}
+        aria-hidden
+      />
     </div>
   );
 };

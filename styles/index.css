@@ -2,12 +2,12 @@
 
 /* Write your own custom base styles here */
 html body {
-  background-color: theme("colors.back");
+  background-color: theme("colors.primary");
   min-height: 100vh;
 }
 
 html.dark body {
-  background-color: theme("colors.back");
+  background-color: theme("colors.primary");
   min-height: 100vh;
 }
 

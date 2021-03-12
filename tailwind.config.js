@@ -11,7 +11,13 @@ module.exports = {
     purgeLayersByDefault: true,
   },
   purge: ["./components/**/*.{js,ts,jsx,tsx}", "./pages/**/*.{js,ts,jsx,tsx}"],
-  theme: { boxShadow, colors, fontFamily, fontSize, fontWeight },
+  theme: {
+    boxShadow,
+    colors,
+    fontFamily,
+    fontSize,
+    fontWeight,
+  },
   variants: {},
   plugins: [],
 };

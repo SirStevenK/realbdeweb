@@ -22,11 +22,12 @@ const RowQuestion: React.FC = () => {
         <span
           className={`text-${
             opened ? "dark" : "dark"
-          } font-display font-bold pr-8`}
+          } font-display md:text-lg font-bold pr-8`}
         >
           Duis auctor elit eget massa viverra tincidunt ?
         </span>
         <i
+          aria-hidden
           className={`select-none text-${
             opened ? "primary" : "primary"
           } cursor-pointer fas fa-${opened ? "minus" : "plus"}`}
@@ -34,7 +35,7 @@ const RowQuestion: React.FC = () => {
         />
       </div>
       <div
-        className={`text-dark text-sm font-body pt-1 pr-8 ${
+        className={`text-dark text-sm md:text-base font-body pt-1 pr-8 md:pr-10 ${
           opened ? "block" : "hidden"
         }`}
       >

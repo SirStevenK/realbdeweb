@@ -9,30 +9,36 @@ const Wrapper = styled.form({
 
 const InputText = styled.input({
   background: colors.white,
-  border: `3px solid ${colors.light}`,
+  border: `3px solid ${colors.gray}`,
   borderRadius: "0.5rem",
   color: colors.dark,
-  fontFamily: fontFamily.body,
-  padding: "2px 5px",
+  fontFamily: fontFamily.display.join(","),
+  padding: "3px 5px",
   outline: "none",
+  "::placeholder": {
+    color: colors.gray,
+  },
   ":focus": {
-    border: `3px solid ${colors.primary}`,
+    border: `3px solid ${colors.primary}CC`,
   },
 });
 
 const TextArea = styled.textarea({
   background: colors.white,
-  border: `3px solid ${colors.light}`,
+  border: `3px solid ${colors.gray}`,
   borderRadius: "0.5rem",
   color: colors.dark,
   display: "block",
-  fontFamily: fontFamily.body,
+  fontFamily: fontFamily.body.join(","),
   height: "180px",
-  padding: "2px 5px",
+  padding: "3px 5px",
   resize: "none",
   outline: "none",
+  "::placeholder": {
+    color: colors.gray,
+  },
   ":focus": {
-    border: `3px solid ${colors.primary}`,
+    border: `3px solid ${colors.primary}CC`,
   },
 });
 
@@ -40,7 +46,7 @@ const Button = styled.button({
   outline: "none!important",
   background: colors.primary,
   color: colors.light,
-  fontFamily: fontFamily.body.join(","),
+  fontFamily: fontFamily.display.join(","),
   fontWeight: "bold",
   textTransform: "uppercase",
   padding: "7px 15px",
@@ -54,7 +60,7 @@ const Button = styled.button({
 
 const Contact: React.FC = () => {
   return (
-    <div className="flex flex-col items-center pt-2 pb-6 px-3">
+    <div id="contact" className="flex flex-col items-center pt-2 pb-6 px-3">
       <h1 className="font-display font-bold text-2xl text-primary text-center">
         Contact
       </h1>
@@ -67,7 +73,7 @@ const Contact: React.FC = () => {
         <TextArea placeholder="Votre message" />
         <div className="flex justify-center">
           <Button type="submit">
-            Envoyer <i className="fas fa-paper-plane icon" />
+            Envoyer <i className="fas fa-paper-plane icon" aria-hidden />
           </Button>
         </div>
       </Wrapper>
