@@ -56,7 +56,7 @@ const WrapperPoint = styled.div<PropsPoint>(({ first, last, done }) => ({
       //
       fontSize: "10px",
       top: "5px",
-      left: "5px",
+      left: "4px",
       position: "absolute",
       zIndex: 20,
     },
@@ -177,7 +177,7 @@ const Agenda: React.FC = () => {
                     done={
                       listY.year < currentYear ||
                       (listY.year === currentYear &&
-                        listMonthsFR.indexOf(listM.month) <= currentMonth)
+                        listMonthsFR.indexOf(listM.month) < currentMonth)
                     }
                   >
                     <div className="border-point">

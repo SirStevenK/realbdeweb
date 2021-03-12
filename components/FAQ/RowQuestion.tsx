@@ -10,7 +10,7 @@ const WrapperRow = styled.div({
   background: colors.light,
   // border: `2px solid ${colors["dark"]}`,
   borderRadius: "5px",
-  maxWidth: "640px",
+  maxWidth: "680px",
   width: "100%",
 });
 
@@ -22,7 +22,7 @@ const RowQuestion: React.FC = () => {
         <span
           className={`text-${
             opened ? "dark" : "dark"
-          } text-lg font-display font-bold pr-8`}
+          } font-display font-bold pr-8`}
         >
           Duis auctor elit eget massa viverra tincidunt ?
         </span>

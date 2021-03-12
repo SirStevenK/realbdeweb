@@ -1,11 +1,9 @@
-import ThemeContext from "@/contexts/ThemeContext";
 import NextImage from "next/image";
 import Link from "next/link";
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import NavIcon from "./NavIcon";
 
 const NavSide: React.FC = () => {
-  const { darkTheme, toggleTheme } = useContext(ThemeContext);
   const [scrollY, setScrollY] = useState(0);
 
   const updateScrollY = useCallback(() => {
@@ -44,14 +42,6 @@ const NavSide: React.FC = () => {
             <Link href="/">
               <a className="flex items-center">
                 <NavIcon icon="fad fa-horizontal-rule" />
-                <span className="ml-3 text-lg">Membres</span>
-              </a>
-            </Link>
-          </li>
-          <li className="text-light font-body font-bold cursor-pointer">
-            <Link href="/">
-              <a className="flex items-center">
-                <NavIcon icon="fad fa-horizontal-rule" />
                 <span className="ml-3 text-lg">Calendrier</span>
               </a>
             </Link>
@@ -81,27 +71,6 @@ const NavSide: React.FC = () => {
             </Link>
           </li>
         </ul>
-        <div
-          className="mb-2 flex text-light cursor-pointer items-center"
-          onClick={toggleTheme}
-        >
-          <div style={{ marginBottom: "-3px" }}>
-            {darkTheme ? (
-              <i
-                className="fal fa-toggle-on"
-                style={{ fontSize: "42px" }}
-                aria-hidden
-              />
-            ) : (
-              <i
-                className="fal fa-toggle-off"
-                style={{ fontSize: "42px" }}
-                aria-hidden
-              />
-            )}
-          </div>
-          <span className="ml-3 font-bold">Thème Sombre</span>
-        </div>
         <ul className="flex space-x-4 mt-4">
           <li className="text-light text-2xl font-display font-bold text-center cursor-pointer">
             <Link href="https://twitter.com/RealMrEsKa">

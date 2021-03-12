@@ -1,5 +1,3 @@
-import colors from "@/styles/colors.json";
-
 type Props = {
   icon: string;
 };
