@@ -1,61 +1,11 @@
 import styled from "@emotion/styled";
-import colors from "@/styles/colors.json";
-import fontFamily from "@/styles/fontFamily.json";
+import InputText from "../InputText/InputText";
+import TextArea from "../TextArea/TextArea";
+import Button from "../Button/Button";
 
 const Wrapper = styled.form({
   width: "100%",
   maxWidth: "680px",
-});
-
-const InputText = styled.input({
-  background: colors.white,
-  border: `3px solid ${colors.gray}`,
-  borderRadius: "0.5rem",
-  color: colors.dark,
-  fontFamily: fontFamily.display.join(","),
-  padding: "3px 5px",
-  outline: "none",
-  "::placeholder": {
-    color: colors.gray,
-  },
-  ":focus": {
-    border: `3px solid ${colors.primary}CC`,
-  },
-});
-
-const TextArea = styled.textarea({
-  background: colors.white,
-  border: `3px solid ${colors.gray}`,
-  borderRadius: "0.5rem",
-  color: colors.dark,
-  display: "block",
-  fontFamily: fontFamily.body.join(","),
-  height: "180px",
-  padding: "3px 5px",
-  resize: "none",
-  outline: "none",
-  "::placeholder": {
-    color: colors.gray,
-  },
-  ":focus": {
-    border: `3px solid ${colors.primary}CC`,
-  },
-});
-
-const Button = styled.button({
-  outline: "none!important",
-  background: colors.primary,
-  color: colors.light,
-  fontFamily: fontFamily.display.join(","),
-  fontWeight: "bold",
-  textTransform: "uppercase",
-  padding: "7px 15px",
-  borderRadius: "5px",
-  ".icon": {
-    fontSize: "14px",
-    marginLeft: "6px",
-    marginRight: "2px",
-  },
 });
 
 const Contact: React.FC = () => {

@@ -14,7 +14,12 @@ const WrapperRow = styled.div({
   width: "100%",
 });
 
-const RowQuestion: React.FC = () => {
+type Props = {
+  question: string;
+  answer: string;
+};
+
+const RowQuestion: React.FC<Props> = ({ answer, question }) => {
   const [opened, setOpened] = useState(false);
   return (
     <WrapperRow>
@@ -24,7 +29,7 @@ const RowQuestion: React.FC = () => {
             opened ? "dark" : "dark"
           } font-display md:text-lg font-bold pr-8`}
         >
-          Duis auctor elit eget massa viverra tincidunt ?
+          {question}
         </span>
         <i
           aria-hidden
@@ -39,9 +44,7 @@ const RowQuestion: React.FC = () => {
           opened ? "block" : "hidden"
         }`}
       >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam egestas
-        tincidunt mi, vel bibendum ante bibendum nec. Etiam ligula leo, dictum
-        ac pretium suscipit, sollicitudin vel est.
+        {answer}
       </div>
     </WrapperRow>
   );

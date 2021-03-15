@@ -1,0 +1,66 @@
+{
+  "introduction": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam egestas tincidunt mi, vel bibendum ante bibendum nec. Etiam ligula leo, dictum ac pretium suscipit, sollicitudin vel est. Ut et massa a justo accumsan eleifend. Aenean risus ante, mollis eu lectus quis, aliquet consectetur eros",
+  "events": [
+    {
+      "color": "orange",
+      "date": "2020-12-31T23:00:00.000Z",
+      "name": "Soirée de présentation du BDE"
+    },
+    {
+      "color": "gray",
+      "date": "2021-01-31T23:00:00.000Z",
+      "name": "Préparation d’un tournoi E-Sport"
+    },
+    {
+      "color": "blue",
+      "date": "2021-02-28T23:00:00.000Z",
+      "name": "Atelier CV / Simulations d’entretiens"
+    },
+    {
+      "color": "green",
+      "date": "2021-03-31T22:00:00.000Z",
+      "name": "Mise en place de l’entraide en ligne"
+    },
+    {
+      "color": "yellow",
+      "date": "2021-04-30T22:00:00.000Z",
+      "name": "Hackaton"
+    },
+    {
+      "color": "orange",
+      "date": "2021-05-31T22:00:00.000Z",
+      "name": "Mise en place d’entraide en présentiel"
+    },
+    {
+      "color": "purple",
+      "date": "2021-06-30T22:00:00.000Z",
+      "name": "Soirée de fin d’année"
+    }
+  ],
+  "testimonials": [
+    {
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam egestas tincidunt mi, vel bibendum ante bibendum nec. Etiam ligula leo, dictum ac pretium suscipit, sollicitudin vel est. Ut et massa a justo accumsan eleifend.",
+      "description": "Promo 2017",
+      "firstname": "Tilly",
+      "lastname": "Guibord"
+    }
+  ],
+  "questions": [
+    {
+      "question": "Duis auctor elit eget massa viverra tincidunt ?",
+      "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam egestas tincidunt mi, vel bibendum ante bibendum nec. Etiam ligula leo, dictum ac pretium suscipit, sollicitudin vel est."
+    },
+    {
+      "question": "Duis auctor elit eget massa viverra tincidunt ?",
+      "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam egestas tincidunt mi, vel bibendum ante bibendum nec. Etiam ligula leo, dictum ac pretium suscipit, sollicitudin vel est."
+    },
+    {
+      "question": "Duis auctor elit eget massa viverra tincidunt ?",
+      "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam egestas tincidunt mi, vel bibendum ante bibendum nec. Etiam ligula leo, dictum ac pretium suscipit, sollicitudin vel est."
+    },
+    {
+      "question": "Duis auctor elit eget massa viverra tincidunt ?",
+      "answer": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam egestas tincidunt mi, vel bibendum ante bibendum nec. Etiam ligula leo, dictum ac pretium suscipit, sollicitudin vel est."
+    }
+  ]
+}

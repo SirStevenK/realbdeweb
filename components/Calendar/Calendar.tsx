@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import colors from "@/styles/colors.json";
 import fontFamily from "@/styles/fontFamily.json";
-import { AgendaEvents } from "@/types/utils";
+import { CalendarElementProps } from "@/types/utils";
 import { listMonthsFR } from "@/types/date";
 import { Fragment, useMemo } from "react";
 import mq from "@/styles/mq";
@@ -109,7 +109,7 @@ const MonthElement = styled.div({
   },
 });
 
-type AgendaMapping = {
+type CalendarMapping = {
   year: number;
   elements: {
     month: string;
@@ -120,28 +120,34 @@ type AgendaMapping = {
   }[];
 };
 
-const TestAgendaMappingYear = (year: number) => (e: AgendaMapping) =>
+const TestCalendarMappingYear = (year: number) => (e: CalendarMapping) =>
   e.year === year;
-const TestAgendaMappingMonth = (month: string) => (e: AgendaMapping) =>
+const TestCalendarMappingMonth = (month: string) => (e: CalendarMapping) =>
   e.elements.find((e) => e.month === month);
-const TestAgendaMapping = (month: string, year: number) => (e: AgendaMapping) =>
-  TestAgendaMappingYear(year)(e) && TestAgendaMappingMonth(month)(e);
+const TestCalendarMapping = (month: string, year: number) => (
+  e: CalendarMapping
+) => TestCalendarMappingYear(year)(e) && TestCalendarMappingMonth(month)(e);
 
-const Agenda: React.FC = () => {
-  const agendaEvents = useMemo(
+type Props = {
+  listEvents: CalendarElementProps[];
+};
+
+const Calendar: React.FC<Props> = ({ listEvents }) => {
+  const calendarEvents = useMemo(
     () =>
-      AgendaEvents.reduce<AgendaMapping[]>((acc, event) => {
-        const month = listMonthsFR[event.date.getMonth()];
-        const year = event.date.getFullYear();
-        if (!acc.find(TestAgendaMapping(month, year))) {
-          if (!acc.find(TestAgendaMappingYear(year)))
+      listEvents.reduce<CalendarMapping[]>((acc, event) => {
+        const date = new Date(event.date);
+        const month = listMonthsFR[date.getMonth()];
+        const year = date.getFullYear();
+        if (!acc.find(TestCalendarMapping(month, year))) {
+          if (!acc.find(TestCalendarMappingYear(year)))
             acc.push({ year, elements: [] });
           acc
-            .find(TestAgendaMappingYear(year))
+            .find(TestCalendarMappingYear(year))
             ?.elements.push({ month, events: [] });
         }
         acc
-          .find(TestAgendaMappingYear(year))
+          .find(TestCalendarMappingYear(year))
           ?.elements.find((e) => e.month === month)
           ?.events.push({
             color: event.color,
@@ -149,7 +155,7 @@ const Agenda: React.FC = () => {
           });
         return acc;
       }, []),
-    []
+    [listEvents]
   );
 
   const [currentYear, currentMonth] = useMemo(() => {
@@ -157,48 +163,53 @@ const Agenda: React.FC = () => {
     return [date.getFullYear(), date.getMonth()];
   }, []);
   return (
-    <div className="flex justify-center items-center pt-4">
-      <Wrapper className="flex flex-col items-center rounded-lg overflow-hidden">
-        <div>
-          {agendaEvents.map((listY, indexY) => (
-            <Fragment key={listY.year}>
-              <YearElement>
-                <span className="year">{listY.year}</span>
-                <WrapperPoint first={indexY === 0} last={false}>
-                  <div className="border-point">
-                    <div className="point colored" />
-                  </div>
-                </WrapperPoint>
-              </YearElement>
-              {listY.elements.map((listM, indexM) => (
-                <MonthElement key={listM.month}>
-                  <span className="month">{listM.month}</span>
-                  <WrapperPoint
-                    first={false}
-                    last={
-                      indexY === agendaEvents.length - 1 &&
-                      indexM === listY.elements.length - 1
-                    }
-                    done={
-                      listY.year < currentYear ||
-                      (listY.year === currentYear &&
-                        listMonthsFR.indexOf(listM.month) < currentMonth)
-                    }
-                  >
+    <div id="calendar">
+      <h1 className="font-display font-bold text-2xl text-primary text-center">
+        Calendrier
+      </h1>
+      <div className="flex justify-center items-center pt-4">
+        <Wrapper className="flex flex-col items-center rounded-lg overflow-hidden">
+          <div>
+            {calendarEvents.map((listY, indexY) => (
+              <Fragment key={listY.year}>
+                <YearElement>
+                  <span className="year">{listY.year}</span>
+                  <WrapperPoint first={indexY === 0} last={false}>
                     <div className="border-point">
-                      <div className="point" />
-                      <i className="fas fa-check icon" aria-hidden />
+                      <div className="point colored" />
                     </div>
                   </WrapperPoint>
-                  <span className="event">{listM.events[0].name}</span>
-                </MonthElement>
-              ))}
-            </Fragment>
-          ))}
-        </div>
-      </Wrapper>
+                </YearElement>
+                {listY.elements.map((listM, indexM) => (
+                  <MonthElement key={listM.month}>
+                    <span className="month">{listM.month}</span>
+                    <WrapperPoint
+                      first={false}
+                      last={
+                        indexY === calendarEvents.length - 1 &&
+                        indexM === listY.elements.length - 1
+                      }
+                      done={
+                        listY.year < currentYear ||
+                        (listY.year === currentYear &&
+                          listMonthsFR.indexOf(listM.month) < currentMonth)
+                      }
+                    >
+                      <div className="border-point">
+                        <div className="point" />
+                        <i className="fas fa-check icon" aria-hidden />
+                      </div>
+                    </WrapperPoint>
+                    <span className="event">{listM.events[0].name}</span>
+                  </MonthElement>
+                ))}
+              </Fragment>
+            ))}
+          </div>
+        </Wrapper>
+      </div>
     </div>
   );
 };
 
-export default Agenda;
+export default Calendar;

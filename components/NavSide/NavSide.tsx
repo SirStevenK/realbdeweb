@@ -5,7 +5,8 @@ import NextImage from "next/image";
 import Link from "next/link";
 import Scroll from "react-scroll";
 import { useCallback, useContext, useEffect, useState } from "react";
-import NavIcon from "./NavIcon";
+import { NavChoiceProps } from "@/types/utils";
+import NavChoice from "./NavChoice";
 
 const Wrapper = styled.div({
   width: "250px",
@@ -24,7 +25,17 @@ const Wrapper = styled.div({
   },
 });
 
-const NavSide: React.FC = () => {
+type Props = {
+  choices: NavChoiceProps[];
+  color?: string;
+  hideSocialIcons?: boolean;
+};
+
+const NavSide: React.FC<Props> = ({
+  choices,
+  color = "primary",
+  hideSocialIcons,
+}) => {
   const { statusMenu, hideMobileMenu } = useContext(MobileContext);
   const [innerHeight, setInnerHeight] = useState(0);
   const [innerWidth, setInnerWidth] = useState(0);
@@ -91,53 +102,30 @@ const NavSide: React.FC = () => {
           />
         </div>
         <ul
-          className={`flex-1 space-y-4 ${
-            innerHeight > 480 ? "mt-8 md:mt-12" : "mt-0"
+          className={`flex-1 flex flex-col ${
+            innerHeight > 480 ? "mt-4 md:mt-8 mb-2" : "mt-0"
           }`}
         >
-          <li className="text-light font-body font-bold cursor-pointer">
-            <div className="flex items-center" onClick={() => scrollTo("pres")}>
-              <NavIcon icon="fas fa-horizontal-rule" />
-              <span className="ml-3 text-lg font-display">Présentation</span>
-            </div>
-          </li>
-          <li className="text-light font-body font-bold cursor-pointer">
-            <div
-              className="flex items-center"
-              onClick={() => scrollTo("calendar")}
+          {choices.map((choice, index) => (
+            <li
+              key={choice.label + choice.value}
+              className={`text-light font-body font-bold cursor-pointer ${
+                choice.displayBottom &&
+                choices.findIndex(({ displayBottom }) => displayBottom) ===
+                  index
+                  ? "mt-auto"
+                  : "mt-4"
+              }`}
             >
-              <NavIcon icon="fas fa-horizontal-rule" />
-              <span className="ml-3 text-lg font-display">Calendrier</span>
-            </div>
-          </li>
-          <li className="text-light font-body font-bold cursor-pointer">
-            <div
-              className="flex items-center"
-              onClick={() => scrollTo("testimonial")}
-            >
-              <NavIcon icon="fas fa-horizontal-rule" />
-              <span className="ml-3 text-lg font-display">
-                Anciens Étudiants
-              </span>
-            </div>
-          </li>
-          <li className="text-light font-body font-bold cursor-pointer">
-            <div className="flex items-center" onClick={() => scrollTo("faq")}>
-              <NavIcon icon="fas fa-horizontal-rule" />
-              <span className="ml-3 text-lg font-display">FAQ</span>
-            </div>
-          </li>
-          <li className="text-light font-body font-bold cursor-pointer">
-            <div
-              className="flex items-center"
-              onClick={() => scrollTo("contact")}
-            >
-              <NavIcon icon="fas fa-horizontal-rule" />
-              <span className="ml-3 text-lg font-display">Contact</span>
-            </div>
-          </li>
+              <NavChoice choice={choice} color={color} scrollTo={scrollTo} />
+            </li>
+          ))}
         </ul>
-        <ul className="flex space-x-4 mt-4">
+        <ul
+          className={`flex space-x-4 mt-4 ${
+            hideSocialIcons ? "hidden" : "block"
+          }`}
+        >
           <li className="text-light text-2xl font-display font-bold text-center cursor-pointer">
             <Link href="https://twitter.com/RealMrEsKa">
               <a target="_new">

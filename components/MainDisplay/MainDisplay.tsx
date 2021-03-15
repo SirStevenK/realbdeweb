@@ -1,9 +1,22 @@
 import MobileContext from "@/contexts/MobileContext";
+import colors from "@/styles/colors.json";
+import { NavChoiceProps } from "@/types/utils";
 import { useCallback, useEffect, useState } from "react";
 import MobileHeader from "../MobileMenu/MobileHeader";
 import NavSide from "../NavSide/NavSide";
 
-const MainDisplay: React.FC = ({ children }) => {
+type Props = {
+  background?: string;
+  choices?: NavChoiceProps[];
+  hideSocialIcons?: boolean;
+};
+
+const MainDisplay: React.FC<Props> = ({
+  children,
+  background = "primary",
+  choices = [],
+  hideSocialIcons,
+}) => {
   const [displayMobileMenu, setDisplayMobileMenu] = useState(false);
 
   const hideMobileMenu = useCallback(() => {
@@ -33,6 +46,10 @@ const MainDisplay: React.FC = ({ children }) => {
     };
   }, [hideMobileMenu]);
 
+  useEffect(() => {
+    document.body.style.backgroundColor = colors[background];
+  }, [background]);
+
   return (
     <MobileContext.Provider
       value={{
@@ -41,15 +58,19 @@ const MainDisplay: React.FC = ({ children }) => {
         toggleStatusMenu,
       }}
     >
-      <div className="md:flex">
-        <NavSide />
+      <div className={`md:flex bg-${background}`}>
+        <NavSide
+          choices={choices}
+          color={background}
+          hideSocialIcons={hideSocialIcons}
+        />
         <div
           id="main"
-          className={`z-10 flex-1 top-0 bottom-0 fixed md:pl-2 md:relative ${
+          className={`z-10 flex-1 flex flex-col top-0 bottom-0 h-full w-full fixed md:pl-2 md:relative ${
             displayMobileMenu
               ? "overflow-hidden"
               : "overflow-y-scroll md:overflow-y-hidden "
-          }`}
+          } min-h-screen`}
           onClick={() => displayMobileMenu && hideMobileMenu()}
           style={
             displayMobileMenu
@@ -65,7 +86,7 @@ const MainDisplay: React.FC = ({ children }) => {
           }
         >
           <MobileHeader />
-          <div className="bg-white md:mt-8 rounded-t-lg md:rounded-tr-none py-6 px-2 shadow-MAIN md:px-10 space-y-6">
+          <div className="bg-white md:mt-8 rounded-t-lg md:min-h-full md:rounded-tr-none py-6 px-2 shadow-MAIN md:px-10 space-y-6 flex-1 relative">
             {children}
           </div>
         </div>

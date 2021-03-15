@@ -1,13 +1,14 @@
+import colors from "@/styles/colors.json";
+
 type Props = {
   icon: string;
+  color?: string;
 };
 
-const NavIcon: React.FC<Props> = ({ icon }) => {
+const NavIcon: React.FC<Props> = ({ icon, color = "primary" }) => {
   return (
     <div
       style={{
-        // background: colors["light"],
-        // border: `2px solid ${colors["dark"]}`,
         borderRadius: "8px",
         display: "flex",
         justifyContent: "center",
@@ -20,7 +21,7 @@ const NavIcon: React.FC<Props> = ({ icon }) => {
     >
       <i
         className={`${icon} text-lg`}
-        style={{ color: "#7E8CA6" }}
+        style={{ color: colors[`navicon-${color}`] }}
         aria-hidden
       />
     </div>

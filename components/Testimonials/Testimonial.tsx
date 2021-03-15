@@ -1,4 +1,12 @@
-const Testimonial: React.FC = () => {
+import { TestomonialElementProps } from "@/types/utils";
+
+type Props = {
+  content: TestomonialElementProps;
+};
+
+const Testimonial: React.FC<Props> = ({
+  content: { content, description, firstname, lastname },
+}) => {
   return (
     <div
       className="rounded-md overflow-hidden bg-white"
@@ -9,12 +17,7 @@ const Testimonial: React.FC = () => {
     >
       <div className="ml-2 py-3 px-2 space-y-2">
         <i aria-hidden className="fas fa-quote-left text-primary text-xl" />
-        <p className="pr-2 font-body text-sm md:text-base">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-          egestas tincidunt mi, vel bibendum ante bibendum nec. Etiam ligula
-          leo, dictum ac pretium suscipit, sollicitudin vel est. Ut et massa a
-          justo accumsan eleifend.
-        </p>
+        <p className="pr-2 font-body text-sm md:text-base">{content}</p>
       </div>
       <div className="flex justify-center items-center p-2 bg-primary bg-opacity-25">
         <img
@@ -28,10 +31,10 @@ const Testimonial: React.FC = () => {
         />
         <div className="ml-4">
           <span className="block text-primary font-display font-bold">
-            Tilly <span className="uppercase">Guibord</span>
+            {firstname} <span className="uppercase">{lastname}</span>
           </span>
           <span className="block text-primary font-display text-sm">
-            Promo 2017
+            {description}
           </span>
         </div>
       </div>
