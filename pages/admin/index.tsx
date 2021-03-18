@@ -5,9 +5,9 @@ import { NavChoiceProps } from "@/types/utils";
 
 export const NavChoices: NavChoiceProps[] = [
   { type: "link", label: "Présentation", value: "/admin/introduction" },
-  { type: "scroll", label: "Calendrier", value: "calendar" },
-  { type: "scroll", label: "Anciens Étudiants", value: "testimonials" },
-  { type: "scroll", label: "FAQ", value: "faq" },
+  { type: "link", label: "Calendrier", value: "/admin/calendar" },
+  { type: "link", label: "Anciens Étudiants", value: "/admin/testimonials" },
+  { type: "link", label: "FAQ", value: "/admin/questions" },
   { type: "scroll", label: "Sauvegardes", value: "saves", displayBottom: true },
   {
     type: "link",

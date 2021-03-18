@@ -1,4 +1,5 @@
 import { TestomonialElementProps } from "@/types/utils";
+import NextImage from "next/image";
 
 type Props = {
   content: TestomonialElementProps;
@@ -12,6 +13,7 @@ const Testimonial: React.FC<Props> = ({
       className="rounded-md overflow-hidden bg-white"
       style={{
         boxShadow: "0 0 6px 3px rgba(0, 0, 0, 0.3)",
+        minWidth: "280px",
         maxWidth: "540px",
       }}
     >
@@ -20,14 +22,12 @@ const Testimonial: React.FC<Props> = ({
         <p className="pr-2 font-body text-sm md:text-base">{content}</p>
       </div>
       <div className="flex justify-center items-center p-2 bg-primary bg-opacity-25">
-        <img
-          className="rounded-full overflow-hidden"
+        <NextImage
+          className="rounded-full overflow-hidden shadow-TESTIMONIAL-PIC"
           src="/images/sampropic.png"
-          style={{
-            boxShadow: "0 0 4px 1px rgba(0, 0, 0, 0.2)",
-            height: "64px",
-            width: "64px",
-          }}
+          alt=""
+          height={"64px"}
+          width={"64px"}
         />
         <div className="ml-4">
           <span className="block text-primary font-display font-bold">

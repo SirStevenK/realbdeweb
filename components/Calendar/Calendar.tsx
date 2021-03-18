@@ -18,7 +18,7 @@ type PropsPoint = {
 
 const WrapperPoint = styled.div<PropsPoint>(({ first, last, done }) => ({
   position: "absolute",
-  left: "88px",
+  left: "95px",
   top: "0",
   height: "100%",
   display: "flex",
@@ -74,7 +74,7 @@ const YearElement = styled.div({
     fontSize: "1.5rem",
     fontWeight: "bold",
     lineHeight: "40px",
-    marginLeft: "calc(83px + 36px)",
+    marginLeft: "calc(90px + 36px)",
     textAlign: "center",
   },
 });
@@ -95,7 +95,7 @@ const MonthElement = styled.div({
     },
     fontWeight: "bold",
     lineHeight: "1.5rem",
-    width: "83px",
+    width: "90px",
     textAlign: "center",
   },
   ".event": {
@@ -114,7 +114,6 @@ type CalendarMapping = {
   elements: {
     month: string;
     events: {
-      color: string;
       name: string;
     }[];
   }[];
@@ -150,7 +149,6 @@ const Calendar: React.FC<Props> = ({ listEvents }) => {
           .find(TestCalendarMappingYear(year))
           ?.elements.find((e) => e.month === month)
           ?.events.push({
-            color: event.color,
             name: event.name,
           });
         return acc;

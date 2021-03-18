@@ -2,9 +2,9 @@ import styled from "@emotion/styled";
 import colors from "@/styles/colors.json";
 import fontFamily from "@/styles/fontFamily.json";
 
-const Button = styled.button({
+const Button = styled.button(({ color }) => ({
   outline: "none!important",
-  background: colors.primary,
+  background: colors[color || "primary"],
   color: colors.light,
   fontFamily: fontFamily.display.join(","),
   fontWeight: "bold",
@@ -16,6 +16,6 @@ const Button = styled.button({
     marginLeft: "6px",
     marginRight: "2px",
   },
-});
+}));
 
 export default Button;

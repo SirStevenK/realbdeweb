@@ -66,11 +66,11 @@ const MainDisplay: React.FC<Props> = ({
         />
         <div
           id="main"
-          className={`z-10 flex-1 flex flex-col top-0 bottom-0 h-full w-full fixed md:pl-2 md:relative ${
+          className={`z-10 flex-1 flex flex-col top-0 bottom-0 w-full fixed md:pl-2 md:relative ${
             displayMobileMenu
               ? "overflow-hidden"
               : "overflow-y-scroll md:overflow-y-hidden "
-          } min-h-screen`}
+          }`}
           onClick={() => displayMobileMenu && hideMobileMenu()}
           style={
             displayMobileMenu

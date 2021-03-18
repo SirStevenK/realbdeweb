@@ -6,12 +6,13 @@ export type MainContentProps = {
 };
 
 export type CalendarElementProps = {
-  color: string;
+  id: string;
   date: string;
   name: string;
 };
 
 export type TestomonialElementProps = {
+  id: string;
   content: string;
   description: string;
   firstname: string;
@@ -19,6 +20,7 @@ export type TestomonialElementProps = {
 };
 
 export type QuestionElementProps = {
+  id: string;
   question: string;
   answer: string;
 };

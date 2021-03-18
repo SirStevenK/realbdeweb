@@ -127,21 +127,21 @@ const NavSide: React.FC<Props> = ({
           }`}
         >
           <li className="text-light text-2xl font-display font-bold text-center cursor-pointer">
-            <Link href="https://twitter.com/RealMrEsKa">
+            <Link href="https://www.facebook.com/EvryBodyMiage">
               <a target="_new">
                 <i className="fab fa-facebook-square" aria-hidden />
               </a>
             </Link>
           </li>
           <li className="text-light text-2xl font-display font-bold text-center cursor-pointer">
-            <Link href="https://www.instagram.com/kilian_braquin">
+            <Link href="https://www.instagram.com/evrybody_miage">
               <a target="_new">
                 <i className="fab fa-instagram" aria-hidden />
               </a>
             </Link>
           </li>
           <li className="text-light text-2xl font-display font-bold text-center cursor-pointer">
-            <Link href="/">
+            <Link href="https://discord.gg/W55yuxNjYS">
               <a target="_new">
                 <i className="fab fa-discord" aria-hidden />
               </a>

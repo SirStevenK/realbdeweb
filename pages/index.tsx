@@ -4,10 +4,13 @@ import FAQ from "@/components/FAQ/FAQ";
 import Calendar from "@/components/Calendar/Calendar";
 import Contact from "@/components/Contact/Contact";
 import MainDisplay from "@/components/MainDisplay/MainDisplay";
-import db from "@/lib/lowdb/DB_Website";
 import { MainContentProps, NavChoiceProps } from "@/types/utils";
 import Testimonials from "@/components/Testimonials/Testimonials";
 import Introduction from "@/components/Introduction/Introduction";
+import GetEvents from "@/lib/services/event/GetEvents";
+import GetIntroduction from "@/lib/services/introduction/GetIntroduction";
+import GetQuestions from "@/lib/services/question/GetQuestions";
+import GetTestimonials from "@/lib/services/testimonial/GetTestimonials";
 
 const NavChoices: NavChoiceProps[] = [
   { type: "scroll", label: "Présentation", value: "intro" },
@@ -40,10 +43,10 @@ const HomePage: NextPage<MainContentProps> = ({
 export const getServerSideProps: GetServerSideProps<MainContentProps> = async () => {
   return {
     props: {
-      events: db.getEvents(),
-      introduction: db.getIntroduction(),
-      questions: db.getQuestions(),
-      testimonials: db.getTestimonials(),
+      events: GetEvents(),
+      introduction: GetIntroduction(),
+      questions: GetQuestions(),
+      testimonials: GetTestimonials(),
     },
   };
 };

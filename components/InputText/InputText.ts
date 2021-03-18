@@ -8,7 +8,7 @@ const InputText = styled.input({
   borderRadius: "0.5rem",
   color: colors.dark,
   fontFamily: fontFamily.display.join(","),
-  padding: "3px 5px",
+  padding: "6px 5px",
   outline: "none",
   "::placeholder": {
     color: colors.gray,

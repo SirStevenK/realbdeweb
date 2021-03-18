@@ -11,6 +11,7 @@ app.prepare().then(() => {
     handle(req, res, parse(req.url, true));
   }).listen(80, (err) => {
     if (err) throw err;
-    console.log("> Ready");
+    // eslint-disable-next-line no-console
+    console.info("> Ready");
   });
 });

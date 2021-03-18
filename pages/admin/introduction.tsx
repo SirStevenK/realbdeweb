@@ -1,18 +1,34 @@
-import { GetServerSideProps, NextPage } from "next";
+import { NextPage } from "next";
 import { NextSeo } from "next-seo";
 import MainDisplay from "@/components/MainDisplay/MainDisplay";
 import { NavChoices } from "./index";
-import db from "@/lib/lowdb/DB_Website";
 import TextArea from "@/components/TextArea/TextArea";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Button from "@/components/Button/Button";
+import axios from "axios";
 
-type Props = {
-  currentValue: string;
-};
+const IntroductionPage: NextPage = () => {
+  const [currentValue, setCurrentValue] = useState("");
+  const [inputContent, setInputContent] = useState("");
 
-const IntroductionPage: NextPage<Props> = ({ currentValue }) => {
-  const [newValue, setNewValue] = useState(currentValue);
+  const getIntroduction = useCallback(() => {
+    axios.get<string>("/api/introduction").then(({ data }) => {
+      setCurrentValue(data);
+      setInputContent(data);
+    });
+  }, []);
+
+  const submitIntroduction = useCallback(() => {
+    axios
+      .post("/api/introduction", { content: inputContent })
+      .then(getIntroduction)
+      .catch(() => alert("La mise à jour a échoué"));
+  }, [inputContent, getIntroduction]);
+
+  useEffect(() => {
+    getIntroduction();
+  }, [getIntroduction]);
+
   return (
     <>
       <NextSeo title="Admin - BDE EvryBody" noindex nofollow />
@@ -31,10 +47,10 @@ const IntroductionPage: NextPage<Props> = ({ currentValue }) => {
           <form className="flex flex-col items-center space-y-3">
             <TextArea
               className="w-full"
-              value={newValue}
-              onChange={(e) => setNewValue(e.currentTarget.value)}
+              value={inputContent}
+              onChange={(e) => setInputContent(e.currentTarget.value)}
             />
-            <Button>
+            <Button type="button" onClick={submitIntroduction}>
               Sauvegarder <i className="fas fa-save icon" aria-hidden />
             </Button>
           </form>
@@ -42,14 +58,6 @@ const IntroductionPage: NextPage<Props> = ({ currentValue }) => {
       </MainDisplay>
     </>
   );
-};
-
-export const getServerSideProps: GetServerSideProps<Props> = async () => {
-  return {
-    props: {
-      currentValue: db.getIntroduction(),
-    },
-  };
 };
 
 export default IntroductionPage;
