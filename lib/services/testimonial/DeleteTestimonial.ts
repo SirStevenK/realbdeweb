@@ -1,5 +1,5 @@
-import db from "@/lib/lowdb/DB_Website";
+import TestimonialQuery from "@/lib/mongoose/queries/TestimonialQuery";
 
-export default function DeleteTestimonial(id: string): void {
-  db.deleteTestimonial(id);
+export default function DeleteTestimonial(id: string): Promise<boolean> {
+  return TestimonialQuery.deleteTestimonial(id);
 }

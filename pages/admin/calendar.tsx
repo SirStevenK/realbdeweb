@@ -19,7 +19,7 @@ const CalendarPage: NextPage = () => {
   const [valueInputMonth, setValueInputMonth] = useState("");
   const [valueInputYear, setValueInputYear] = useState("");
 
-  const event = useMemo<Omit<CalendarElementProps, "id">>(
+  const event = useMemo<CalendarElementProps>(
     () => ({
       date: `${valueInputYear}-${valueInputMonth.padStart(
         2,
@@ -32,9 +32,9 @@ const CalendarPage: NextPage = () => {
 
   const options = useMemo(() => {
     return [{ label: "+ Nouvel Evénement", value: "" }].concat(
-      listEvents.map(({ id, date, name }) => ({
+      listEvents.map(({ _id, date, name }) => ({
         label: `${date.substring(0, 10)} - ${name}`,
-        value: id,
+        value: _id as string,
       }))
     );
   }, [listEvents]);
@@ -95,7 +95,7 @@ const CalendarPage: NextPage = () => {
       setValueInputYear("");
     } else {
       const { name, date } = listEvents.find(
-        ({ id }) => selectedEvent === id
+        ({ _id }) => selectedEvent === _id
       ) as CalendarElementProps;
       setValueInputName(name);
       const elementDate = date.substring(0, 10).split("-");

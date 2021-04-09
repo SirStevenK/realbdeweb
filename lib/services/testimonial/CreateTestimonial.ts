@@ -1,4 +1,4 @@
-import db from "@/lib/lowdb/DB_Website";
+import TestimonialQuery from "@/lib/mongoose/queries/TestimonialQuery";
 import { TestomonialElementProps } from "@/types/utils";
 
 export const SchemaBodyCreateTestimonial = {
@@ -14,7 +14,7 @@ export const SchemaBodyCreateTestimonial = {
 };
 
 export default function CreateTestimonial(
-  testimonial: Omit<TestomonialElementProps, "id">
-): void {
-  db.addTestimonial(testimonial);
+  testimonial: TestomonialElementProps
+): Promise<boolean> {
+  return TestimonialQuery.addTestimonial(testimonial);
 }

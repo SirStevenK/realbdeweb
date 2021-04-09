@@ -14,12 +14,13 @@ export default async (
   try {
     switch (method) {
       case "GET":
-        res.status(200).json(GetTestimonials());
+        res.status(200).json(await GetTestimonials());
         break;
       case "POST":
         if (CheckSchema(SchemaBodyCreateTestimonial, req.body)) {
-          CreateTestimonial(req.body);
-          res.status(201).end();
+          const done = await CreateTestimonial(req.body);
+          if (done) res.status(201).end();
+          else throw "Failed";
           break;
         } else throw new Error("Bad Request");
       default:
@@ -29,6 +30,8 @@ export default async (
   } catch (e) {
     if (e === "Bad Request") {
       res.status(400).end(`Bad Request`);
+    } else if (e === "Failed") {
+      res.status(400).end(`Action Failed`);
     } else {
       res.status(400).end(`Unknown`);
     }

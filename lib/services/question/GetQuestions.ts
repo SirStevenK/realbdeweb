@@ -1,6 +1,6 @@
-import db from "@/lib/lowdb/DB_Website";
+import QuestionQuery from "@/lib/mongoose/queries/QuestionQuery";
 import { QuestionElementProps } from "@/types/utils";
 
-export default function GetQuestions(): QuestionElementProps[] {
-  return db.getQuestions();
+export default function GetQuestions(): Promise<QuestionElementProps[]> {
+  return QuestionQuery.getQuestions();
 }

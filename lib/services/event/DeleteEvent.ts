@@ -1,5 +1,5 @@
-import db from "@/lib/lowdb/DB_Website";
+import EventQuery from "@/lib/mongoose/queries/EventQuery";
 
-export default function DeleteEvent(id: string): void {
-  db.deleteEvent(id);
+export default function DeleteEvent(id: string): Promise<boolean> {
+  return EventQuery.deleteEvent(id);
 }

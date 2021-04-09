@@ -1,4 +1,4 @@
-import db from "@/lib/lowdb/DB_Website";
+import EventQuery from "@/lib/mongoose/queries/EventQuery";
 import { CalendarElementProps } from "@/types/utils";
 
 export const SchemaBodyUpdateEvent = {
@@ -12,7 +12,7 @@ export const SchemaBodyUpdateEvent = {
 };
 export default function UpdateEvent(
   id: string,
-  event: Omit<CalendarElementProps, "id">
-): void {
-  db.updateEvent({ id, ...event });
+  event: CalendarElementProps
+): Promise<boolean> {
+  return EventQuery.updateEvent({ ...event, _id: id });
 }

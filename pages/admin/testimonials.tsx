@@ -22,7 +22,7 @@ const TestimonialsPage: NextPage = () => {
   const [valueInputFirstName, setValueInputFirstName] = useState("");
   const [valueInputLastName, setValueInputLastName] = useState("");
 
-  const testimonial = useMemo<Omit<TestomonialElementProps, "id">>(
+  const testimonial = useMemo<TestomonialElementProps>(
     () => ({
       content: valueInputContent,
       description: valueInputDescription,
@@ -39,9 +39,9 @@ const TestimonialsPage: NextPage = () => {
 
   const options = useMemo(() => {
     return [{ label: "+ Nouveau Témoignage", value: "" }].concat(
-      listTestimonials.map(({ id, firstname, lastname, description }) => ({
+      listTestimonials.map(({ _id, firstname, lastname, description }) => ({
         label: `${firstname} ${lastname} - ${description}`,
-        value: id,
+        value: _id as string,
       }))
     );
   }, [listTestimonials]);
@@ -117,7 +117,7 @@ const TestimonialsPage: NextPage = () => {
         firstname,
         lastname,
       } = listTestimonials.find(
-        ({ id }) => id === selectedTestimonial
+        ({ _id }) => _id === selectedTestimonial
       ) as TestomonialElementProps;
       setValueInputContent(content);
       setValueInputDescription(description);

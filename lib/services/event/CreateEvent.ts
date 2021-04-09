@@ -1,4 +1,4 @@
-import db from "@/lib/lowdb/DB_Website";
+import EventQuery from "@/lib/mongoose/queries/EventQuery";
 import { CalendarElementProps } from "@/types/utils";
 
 export const SchemaBodyCreateEvent = {
@@ -11,7 +11,7 @@ export const SchemaBodyCreateEvent = {
   required: ["date", "name"],
 };
 export default function CreateEvent(
-  event: Omit<CalendarElementProps, "id">
-): void {
-  db.addEvent(event);
+  event: CalendarElementProps
+): Promise<boolean> {
+  return EventQuery.addEvent(event);
 }

@@ -5,14 +5,19 @@ export type MainContentProps = {
   questions: QuestionElementProps[];
 };
 
+export type TextProps = {
+  type: string;
+  content: string;
+};
+
 export type CalendarElementProps = {
-  id: string;
+  _id?: string;
   date: string;
   name: string;
 };
 
 export type TestomonialElementProps = {
-  id: string;
+  _id?: string;
   content: string;
   description: string;
   firstname: string;
@@ -20,7 +25,7 @@ export type TestomonialElementProps = {
 };
 
 export type QuestionElementProps = {
-  id: string;
+  _id?: string;
   question: string;
   answer: string;
 };
@@ -30,4 +35,10 @@ export type NavChoiceProps = {
   label: string;
   value: string;
   displayBottom?: boolean;
+};
+
+export type SaveProps = {
+  date: string;
+  message: string;
+  content: unknown;
 };

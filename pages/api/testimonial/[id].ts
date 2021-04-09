@@ -21,7 +21,7 @@ export default async (
     switch (method) {
       case "GET":
         if (isIdValid) {
-          const testimonial = GetTestimonialById(id as string);
+          const testimonial = await GetTestimonialById(id as string);
           if (testimonial) {
             res.status(200).json(testimonial);
             break;
@@ -29,14 +29,16 @@ export default async (
         } else throw new Error("Bad Request");
       case "PUT":
         if (isIdValid && CheckSchema(SchemaBodyUpdateTestimonial, req.body)) {
-          UpdateTestimonial(id as string, req.body);
-          res.status(200).end();
+          const done = await UpdateTestimonial(id as string, req.body);
+          if (done) res.status(200).end();
+          else throw "Failed";
           break;
         } else throw new Error("Bad Request");
       case "DELETE":
         if (isIdValid) {
-          DeleteTestimonial(id as string);
-          res.status(200).end();
+          const done = await DeleteTestimonial(id as string);
+          if (done) res.status(200).end();
+          else throw "Failed";
           break;
         } else throw new Error("Bad Request");
       default:
@@ -48,6 +50,8 @@ export default async (
       res.status(400).end(`Bad Request`);
     } else if (e === "Not Exist") {
       res.status(400).end(`Not Exist`);
+    } else if (e === "Failed") {
+      res.status(400).end(`Action Failed`);
     } else {
       res.status(400).end(`Unknown`);
     }

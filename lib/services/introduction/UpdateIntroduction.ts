@@ -1,4 +1,4 @@
-import db from "@/lib/lowdb/DB_Website";
+import TextQuery from "@/lib/mongoose/queries/TextQuery";
 
 export const SchemaBodyUpdateIntroduction = {
   type: "object",
@@ -9,6 +9,6 @@ export const SchemaBodyUpdateIntroduction = {
   required: ["content"],
 };
 
-export default function UpdateIntroduction(content: string): void {
-  db.updateIntroduction(content);
+export default function UpdateIntroduction(content: string): Promise<boolean> {
+  return TextQuery.updateIntroduction(content);
 }

@@ -1,6 +1,6 @@
-import db from "@/lib/lowdb/DB_Website";
+import TestimonialQuery from "@/lib/mongoose/queries/TestimonialQuery";
 import { TestomonialElementProps } from "@/types/utils";
 
-export default function GetTestimonials(): TestomonialElementProps[] {
-  return db.getTestimonials();
+export default function GetTestimonials(): Promise<TestomonialElementProps[]> {
+  return TestimonialQuery.getTestimonials();
 }

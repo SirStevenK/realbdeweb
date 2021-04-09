@@ -21,7 +21,7 @@ export default async (
     switch (method) {
       case "GET":
         if (isIdValid) {
-          const question = GetQuestionById(id as string);
+          const question = await GetQuestionById(id as string);
           if (question) {
             res.status(200).json(question);
             break;
@@ -29,14 +29,16 @@ export default async (
         } else throw new Error("Bad Request");
       case "PUT":
         if (isIdValid && CheckSchema(SchemaBodyUpdateQuestion, req.body)) {
-          UpdateQuestion(id as string, req.body);
-          res.status(200).end();
+          const done = await UpdateQuestion(id as string, req.body);
+          if (done) res.status(200).end();
+          else throw "Failed";
           break;
         } else throw new Error("Bad Request");
       case "DELETE":
         if (isIdValid) {
-          DeleteQuestion(id as string);
-          res.status(200).end();
+          const done = await DeleteQuestion(id as string);
+          if (done) res.status(200).end();
+          else throw "Failed";
           break;
         } else throw new Error("Bad Request");
       default:
@@ -48,6 +50,8 @@ export default async (
       res.status(400).end(`Bad Request`);
     } else if (e === "Not Exist") {
       res.status(400).end(`Not Exist`);
+    } else if (e === "Failed") {
+      res.status(400).end(`Action Failed`);
     } else {
       res.status(400).end(`Unknown`);
     }

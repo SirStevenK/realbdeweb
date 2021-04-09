@@ -14,12 +14,13 @@ export default async (
   try {
     switch (method) {
       case "GET":
-        res.status(200).end(GetIntroduction());
+        res.status(200).end(await GetIntroduction());
         break;
-      case "POST":
+      case "PUT":
         if (CheckSchema(SchemaBodyUpdateIntroduction, req.body)) {
-          UpdateIntroduction(req.body.content);
-          res.status(200).end();
+          const done = UpdateIntroduction(req.body.content);
+          if (done) res.status(200).end();
+          else throw "Failed";
           break;
         } else throw new Error("Bad Request");
       default:
@@ -29,6 +30,8 @@ export default async (
   } catch (e) {
     if (e === "Bad Request") {
       res.status(400).end(`Bad Request`);
+    } else if (e === "Failed") {
+      res.status(400).end(`Action Failed`);
     } else {
       res.status(400).end(`Unknown`);
     }

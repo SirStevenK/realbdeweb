@@ -20,7 +20,7 @@ const IntroductionPage: NextPage = () => {
 
   const submitIntroduction = useCallback(() => {
     axios
-      .post("/api/introduction", { content: inputContent })
+      .put("/api/introduction", { content: inputContent })
       .then(getIntroduction)
       .catch(() => alert("La mise à jour a échoué"));
   }, [inputContent, getIntroduction]);

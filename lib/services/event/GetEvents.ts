@@ -1,6 +1,6 @@
-import db from "@/lib/lowdb/DB_Website";
+import EventQuery from "@/lib/mongoose/queries/EventQuery";
 import { CalendarElementProps } from "@/types/utils";
 
-export default function GetEvents(): CalendarElementProps[] {
-  return db.getEvents();
+export default function GetEvents(): Promise<CalendarElementProps[]> {
+  return EventQuery.getEvents();
 }

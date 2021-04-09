@@ -1,4 +1,4 @@
-import db from "@/lib/lowdb/DB_Website";
+import TestimonialQuery from "@/lib/mongoose/queries/TestimonialQuery";
 import { TestomonialElementProps } from "@/types/utils";
 
 export const SchemaBodyUpdateTestimonial = {
@@ -15,7 +15,7 @@ export const SchemaBodyUpdateTestimonial = {
 
 export default function UpdateTestimonial(
   id: string,
-  testimonial: Omit<TestomonialElementProps, "id">
-): void {
-  db.updateTestimonial({ id, ...testimonial });
+  testimonial: TestomonialElementProps
+): Promise<boolean> {
+  return TestimonialQuery.updateTestimonial({ ...testimonial, _id: id });
 }

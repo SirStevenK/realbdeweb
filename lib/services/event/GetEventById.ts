@@ -1,8 +1,8 @@
-import db from "@/lib/lowdb/DB_Website";
+import EventQuery from "@/lib/mongoose/queries/EventQuery";
 import { CalendarElementProps } from "@/types/utils";
 
 export default function GetEventByID(
   id: string
-): CalendarElementProps | undefined {
-  return db.getEvent(id);
+): Promise<CalendarElementProps | undefined> {
+  return EventQuery.getEvent(id);
 }

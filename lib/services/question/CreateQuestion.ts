@@ -1,4 +1,4 @@
-import db from "@/lib/lowdb/DB_Website";
+import QuestionQuery from "@/lib/mongoose/queries/QuestionQuery";
 import { QuestionElementProps } from "@/types/utils";
 
 export const SchemaBodyCreateQuestion = {
@@ -11,7 +11,7 @@ export const SchemaBodyCreateQuestion = {
   required: ["question", "answer"],
 };
 export default function CreateQuestion(
-  question: Omit<QuestionElementProps, "id">
-): void {
-  db.addQuestion(question);
+  question: QuestionElementProps
+): Promise<boolean> {
+  return QuestionQuery.addQuestion(question);
 }

@@ -20,7 +20,7 @@ const QuestionsPage: NextPage = () => {
   const [valueInputQuestion, setValueInputQuestion] = useState("");
   const [valueInputAnswer, setValueInputAnswer] = useState("");
 
-  const question = useMemo<Omit<QuestionElementProps, "id">>(
+  const question = useMemo<QuestionElementProps>(
     () => ({
       answer: valueInputAnswer,
       question: valueInputQuestion,
@@ -30,9 +30,9 @@ const QuestionsPage: NextPage = () => {
 
   const options = useMemo(() => {
     return [{ label: "+ Nouvelle Question", value: "" }].concat(
-      listQuestions.map(({ id, question }) => ({
-        label: `${id} - ${question}`,
-        value: id,
+      listQuestions.map(({ _id, question }) => ({
+        label: `${(_id as string).substring(0, 10)} - ${question}`,
+        value: _id as string,
       }))
     );
   }, [listQuestions]);
@@ -89,7 +89,7 @@ const QuestionsPage: NextPage = () => {
       setValueInputAnswer("");
     } else {
       const { answer, question } = listQuestions.find(
-        ({ id }) => id === selectedQuestion
+        ({ _id }) => _id === selectedQuestion
       ) as QuestionElementProps;
       setValueInputQuestion(question);
       setValueInputAnswer(answer);
