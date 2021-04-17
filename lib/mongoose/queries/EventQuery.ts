@@ -1,8 +1,6 @@
-import { MongoConnection } from "@/lib/mongoose/MongoConnection";
 import { CalendarElementProps } from "@/types/utils";
-import { Document, Model } from "mongoose";
+import { Document, Model, Schema } from "mongoose";
 import Database from "../Database";
-const Schema = MongoConnection.Schema;
 
 const EventSchema = new Schema({
   date: String,

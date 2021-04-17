@@ -1,8 +1,6 @@
-import { MongoConnection } from "@/lib/mongoose/MongoConnection";
 import { QuestionElementProps } from "@/types/utils";
-import { Document, Model } from "mongoose";
+import { Document, Model, Schema } from "mongoose";
 import Database from "../Database";
-const Schema = MongoConnection.Schema;
 
 const QuestionSchema = new Schema({
   question: String,

@@ -6,6 +6,7 @@ import TextArea from "@/components/TextArea/TextArea";
 import { useCallback, useEffect, useState } from "react";
 import Button from "@/components/Button/Button";
 import axios from "axios";
+import ProtectedPage from "@/components/Admin/ProtectedPage";
 
 const IntroductionPage: NextPage = () => {
   const [currentValue, setCurrentValue] = useState("");
@@ -30,7 +31,7 @@ const IntroductionPage: NextPage = () => {
   }, [getIntroduction]);
 
   return (
-    <>
+    <ProtectedPage>
       <NextSeo title="Admin - BDE EvryBody" noindex nofollow />
       <MainDisplay background="secondary" choices={NavChoices} hideSocialIcons>
         <div className="flex flex-col space-y-4 px-2 lg:px-8 xl:px-12">
@@ -56,7 +57,7 @@ const IntroductionPage: NextPage = () => {
           </form>
         </div>
       </MainDisplay>
-    </>
+    </ProtectedPage>
   );
 };
 

@@ -1,14 +1,13 @@
 import ThemeProvider from "@/providers/ThemeProvider";
-import { wrapper } from "@/store";
 import "@/styles/index.css";
 import { AppProps } from "next/app";
 
-function CustomApp({ Component, pageProps }: AppProps) {
+const CustomApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <ThemeProvider>
       <Component {...pageProps} />
     </ThemeProvider>
   );
-}
+};
 
-export default wrapper.withRedux(CustomApp);
+export default CustomApp;

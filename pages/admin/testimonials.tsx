@@ -10,6 +10,7 @@ import InputText from "@/components/InputText/InputText";
 import TextArea from "@/components/TextArea/TextArea";
 import SelectStyles from "@/components/Select/SelectStyle";
 import axios from "axios";
+import ProtectedPage from "@/components/Admin/ProtectedPage";
 
 const TestimonialsPage: NextPage = () => {
   const [selectedTestimonial, setSelectedTestimonial] = useState("");
@@ -127,7 +128,7 @@ const TestimonialsPage: NextPage = () => {
   }, [listTestimonials, selectedTestimonial]);
 
   return (
-    <>
+    <ProtectedPage>
       <NextSeo title="Admin - BDE EvryBody" noindex nofollow />
       <MainDisplay background="secondary" choices={NavChoices} hideSocialIcons>
         <div className="flex flex-col space-y-4 px-2 lg:px-8 xl:px-12">
@@ -215,7 +216,7 @@ const TestimonialsPage: NextPage = () => {
           </form>
         </div>
       </MainDisplay>
-    </>
+    </ProtectedPage>
   );
 };
 

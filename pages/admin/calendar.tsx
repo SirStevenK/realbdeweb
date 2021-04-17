@@ -9,6 +9,7 @@ import Select from "react-select";
 import InputText from "@/components/InputText/InputText";
 import SelectStyles from "@/components/Select/SelectStyle";
 import axios from "axios";
+import ProtectedPage from "@/components/Admin/ProtectedPage";
 
 const CalendarPage: NextPage = () => {
   const [selectedEvent, setSelectedEvent] = useState<string>("");
@@ -106,7 +107,7 @@ const CalendarPage: NextPage = () => {
   }, [listEvents, selectedEvent]);
 
   return (
-    <>
+    <ProtectedPage>
       <NextSeo title="Admin - BDE EvryBody" noindex nofollow />
       <MainDisplay background="secondary" choices={NavChoices} hideSocialIcons>
         <div className="flex flex-col space-y-4 px-2 lg:px-8 xl:px-12">
@@ -189,7 +190,7 @@ const CalendarPage: NextPage = () => {
           </form>
         </div>
       </MainDisplay>
-    </>
+    </ProtectedPage>
   );
 };
 

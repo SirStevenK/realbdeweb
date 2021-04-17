@@ -1,8 +1,6 @@
-import { MongoConnection } from "@/lib/mongoose/MongoConnection";
 import { TextProps } from "@/types/utils";
-import { Document, Model } from "mongoose";
+import { Document, Model, Schema } from "mongoose";
 import Database from "../Database";
-const Schema = MongoConnection.Schema;
 
 const TextSchema = new Schema({
   type: String,
