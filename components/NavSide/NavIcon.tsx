@@ -1,4 +1,5 @@
 import colors from "@/styles/colors.json";
+import { AngleDoubleRight } from "../icons";
 
 type Props = {
   color?: string;
@@ -9,6 +10,7 @@ const NavIcon: React.FC<Props> = ({ color = "primary" }) => {
     <div
       style={{
         borderRadius: "8px",
+        color: colors[`navicon-${color}`],
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -16,11 +18,7 @@ const NavIcon: React.FC<Props> = ({ color = "primary" }) => {
         width: "36px",
       }}
     >
-      <i
-        className={`fas fa-angle-double-right text-lg`}
-        style={{ color: colors[`navicon-${color}`] }}
-        aria-hidden
-      />
+      <AngleDoubleRight />
     </div>
   );
 };

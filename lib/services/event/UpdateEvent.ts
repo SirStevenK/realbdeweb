@@ -10,6 +10,7 @@ export const SchemaBodyUpdateEvent = {
   },
   required: ["date", "name"],
 };
+
 export default function UpdateEvent(
   id: string,
   event: CalendarElementProps

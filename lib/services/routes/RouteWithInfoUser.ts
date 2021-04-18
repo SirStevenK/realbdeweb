@@ -31,13 +31,13 @@ export default function RouteWithInfoUser(
       };
       return callback(req, res, infoUser);
     } catch (e) {
-      if (e === "Bad Request") {
+      if (e.message === "Bad Request") {
         res.status(400).end(`Bad Request`);
-      } else if (e === "Failed") {
+      } else if (e.message === "Failed") {
         res.status(400).end(`Action Failed`);
-      } else if (e === "Session expired") {
+      } else if (e.message === "Session expired") {
         res.status(401).end(`Session expired`);
-      } else if (e === "Not Connected") {
+      } else if (e.message === "Not Connected") {
         res.status(401).end(`Not Connected`);
       } else {
         res.status(400).end(`Unknown Error`);

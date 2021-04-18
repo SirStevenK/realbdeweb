@@ -7,6 +7,7 @@ import Scroll from "react-scroll";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { NavChoiceProps } from "@/types/utils";
 import NavChoice from "./NavChoice";
+import { Discord, Facebook, Instagram } from "../icons";
 
 const Wrapper = styled.div({
   width: "250px",
@@ -129,21 +130,21 @@ const NavSide: React.FC<Props> = ({
           <li className="text-light text-2xl font-display font-bold text-center cursor-pointer">
             <Link href="https://www.facebook.com/EvryBodyMiage">
               <a target="_new">
-                <i className="fab fa-facebook-square" aria-hidden />
+                <Facebook />
               </a>
             </Link>
           </li>
           <li className="text-light text-2xl font-display font-bold text-center cursor-pointer">
             <Link href="https://www.instagram.com/evrybody_miage">
               <a target="_new">
-                <i className="fab fa-instagram" aria-hidden />
+                <Instagram />
               </a>
             </Link>
           </li>
           <li className="text-light text-2xl font-display font-bold text-center cursor-pointer">
             <Link href="https://discord.gg/W55yuxNjYS">
               <a target="_new">
-                <i className="fab fa-discord" aria-hidden />
+                <Discord />
               </a>
             </Link>
           </li>

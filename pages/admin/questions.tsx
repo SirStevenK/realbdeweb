@@ -11,6 +11,7 @@ import TextArea from "@/components/TextArea/TextArea";
 import SelectStyles from "@/components/Select/SelectStyle";
 import axios from "axios";
 import ProtectedPage from "@/components/Admin/ProtectedPage";
+import { Plus, Save, Trash } from "@/components/icons";
 
 const QuestionsPage: NextPage = () => {
   const [selectedQuestion, setSelectedQuestion] = useState("");
@@ -144,12 +145,7 @@ const QuestionsPage: NextPage = () => {
             <div className="flex flex-col items-stretch space-y-2">
               <Button type="button" onClick={submitQuestion}>
                 {selectedQuestion === "" ? "Ajouter" : "Modifier"}{" "}
-                <i
-                  className={`fas fa-${
-                    selectedQuestion === "" ? "plus" : "save"
-                  } icon`}
-                  aria-hidden
-                />
+                {selectedQuestion === "" ? <Plus /> : <Save />}
               </Button>
               <Button
                 hidden={selectedQuestion === ""}
@@ -158,7 +154,7 @@ const QuestionsPage: NextPage = () => {
                 onClick={deleteQuestion}
               >
                 Supprimer
-                <i className={`fas fa-trash-alt icon`} aria-hidden />
+                <Trash />
               </Button>
             </div>
           </form>

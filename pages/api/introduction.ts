@@ -21,7 +21,7 @@ export default RouteWithInfoUser(async (req, res, { isConnected }) => {
         break;
       } else throw new Error("Bad Request");
     default:
-      res.setHeader("Allow", ["GET", "POST"]);
+      res.setHeader("Allow", ["GET", "PUT"]);
       res.status(405).end(`Method ${method} Not Allowed`);
   }
 });

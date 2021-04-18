@@ -7,6 +7,7 @@ import { useCallback, useEffect, useState } from "react";
 import Button from "@/components/Button/Button";
 import axios from "axios";
 import ProtectedPage from "@/components/Admin/ProtectedPage";
+import { Save } from "@/components/icons";
 
 const IntroductionPage: NextPage = () => {
   const [currentValue, setCurrentValue] = useState("");
@@ -52,7 +53,7 @@ const IntroductionPage: NextPage = () => {
               onChange={(e) => setInputContent(e.currentTarget.value)}
             />
             <Button type="button" onClick={submitIntroduction}>
-              Sauvegarder <i className="fas fa-save icon" aria-hidden />
+              Sauvegarder <Save />
             </Button>
           </form>
         </div>

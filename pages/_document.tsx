@@ -19,11 +19,6 @@ class MyDocument extends Document {
     return (
       <Html lang="fr">
         <Head>
-          {/* <script
-            async
-            crossOrigin="anonymous"
-            src="https://kit.fontawesome.com/7a803e3d01.js"
-          ></script> */}
           <link rel="shortcut icon" href="/images/favicon.ico" />
         </Head>
         <body>

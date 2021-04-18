@@ -5,6 +5,7 @@ import { CalendarElementProps } from "@/types/utils";
 import { listMonthsFR } from "@/types/date";
 import { Fragment, useMemo } from "react";
 import mq from "@/styles/mq";
+import { Check } from "../icons";
 
 const Wrapper = styled.div({
   maxWidth: "800px",
@@ -51,10 +52,9 @@ const WrapperPoint = styled.div<PropsPoint>(({ first, last, done }) => ({
     ".point.colored": {
       backgroundColor: colors.primary,
     },
-    ".icon": {
+    ".check-icon": {
       color: colors.primary,
       display: done ? "block" : "none",
-      //
       fontSize: "10px",
       top: "5px",
       left: "4px",
@@ -195,7 +195,7 @@ const Calendar: React.FC<Props> = ({ listEvents }) => {
                     >
                       <div className="border-point">
                         <div className="point" />
-                        <i className="fas fa-check icon" aria-hidden />
+                        <Check className="check-icon" />
                       </div>
                     </WrapperPoint>
                     <span className="event">{listM.events[0].name}</span>

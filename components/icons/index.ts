@@ -1,0 +1,12 @@
+export { default as AngleDoubleRight } from "./AngleDoubleRight";
+export { default as Bars } from "./Bars";
+export { default as Check } from "./Check";
+export { default as Discord } from "./Discord";
+export { default as Facebook } from "./Facebook";
+export { default as Instagram } from "./Instagram";
+export { default as Minus } from "./Minus";
+export { default as PaperPlane } from "./PaperPlane";
+export { default as Plus } from "./Plus";
+export { default as QuoteLeft } from "./QuoteLeft";
+export { default as Save } from "./Save";
+export { default as Trash } from "./Trash";

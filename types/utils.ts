@@ -30,6 +30,11 @@ export type QuestionElementProps = {
   answer: string;
 };
 
+export type AdministratorElementProps = {
+  _id?: string;
+  email: string;
+};
+
 export type NavChoiceProps = {
   type: "link" | "scroll" | "function";
   label: string;

@@ -10,6 +10,7 @@ export const SchemaBodyCreateEvent = {
   },
   required: ["date", "name"],
 };
+
 export default function CreateEvent(
   event: CalendarElementProps
 ): Promise<boolean> {

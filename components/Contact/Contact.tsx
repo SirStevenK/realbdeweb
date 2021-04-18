@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import InputText from "../InputText/InputText";
 import TextArea from "../TextArea/TextArea";
 import Button from "../Button/Button";
+import { PaperPlane } from "../icons";
 
 const Wrapper = styled.form({
   width: "100%",
@@ -23,7 +24,7 @@ const Contact: React.FC = () => {
         <TextArea placeholder="Votre message" />
         <div className="flex justify-center">
           <Button type="submit">
-            Envoyer <i className="fas fa-paper-plane icon" aria-hidden />
+            Envoyer <PaperPlane />
           </Button>
         </div>
       </Wrapper>

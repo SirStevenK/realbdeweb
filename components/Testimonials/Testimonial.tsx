@@ -1,6 +1,6 @@
+import { QuoteLeft } from "@/components/icons";
 import { TestomonialElementProps } from "@/types/utils";
 import NextImage from "next/image";
-
 type Props = {
   content: TestomonialElementProps;
 };
@@ -18,7 +18,7 @@ const Testimonial: React.FC<Props> = ({
       }}
     >
       <div className="ml-2 py-3 px-2 space-y-2">
-        <i aria-hidden className="fas fa-quote-left text-primary text-xl" />
+        <QuoteLeft className="text-primary" />
         <p className="pr-2 font-body text-sm md:text-base">{content}</p>
       </div>
       <div className="flex justify-center items-center p-2 bg-primary bg-opacity-25">

@@ -3,6 +3,9 @@ import colors from "@/styles/colors.json";
 import fontFamily from "@/styles/fontFamily.json";
 
 const Button = styled.button(({ color }) => ({
+  display: "flex",
+  margin: "0 auto",
+  alignItems: "center",
   outline: "none!important",
   background: colors[color || "primary"],
   color: colors.light,
@@ -11,7 +14,7 @@ const Button = styled.button(({ color }) => ({
   textTransform: "uppercase",
   padding: "7px 15px",
   borderRadius: "5px",
-  ".icon": {
+  svg: {
     fontSize: "14px",
     marginLeft: "6px",
     marginRight: "2px",

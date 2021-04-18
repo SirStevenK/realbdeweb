@@ -1,6 +1,7 @@
 import colors from "@/styles/colors.json";
 import styled from "@emotion/styled";
 import { useState } from "react";
+import { Minus, Plus } from "../icons";
 
 const WrapperRow = styled.div({
   paddingLeft: "20px",
@@ -31,13 +32,17 @@ const RowQuestion: React.FC<Props> = ({ answer, question }) => {
         >
           {question}
         </span>
-        <i
-          aria-hidden
-          className={`select-none text-${
-            opened ? "primary" : "primary"
-          } cursor-pointer fas fa-${opened ? "minus" : "plus"}`}
-          onClick={() => setOpened((opened) => !opened)}
-        />
+        {opened ? (
+          <Minus
+            className="cursor-pointer text-primary select-none"
+            onClick={() => setOpened(() => false)}
+          />
+        ) : (
+          <Plus
+            className="cursor-pointer text-primary select-none"
+            onClick={() => setOpened(() => true)}
+          />
+        )}
       </div>
       <div
         className={`text-dark text-sm md:text-base font-body pt-1 pr-8 md:pr-10 ${

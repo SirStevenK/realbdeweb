@@ -10,6 +10,7 @@ import InputText from "@/components/InputText/InputText";
 import SelectStyles from "@/components/Select/SelectStyle";
 import axios from "axios";
 import ProtectedPage from "@/components/Admin/ProtectedPage";
+import { Plus, Save, Trash } from "@/components/icons";
 
 const CalendarPage: NextPage = () => {
   const [selectedEvent, setSelectedEvent] = useState<string>("");
@@ -170,12 +171,7 @@ const CalendarPage: NextPage = () => {
             <div className="flex flex-col items-stretch space-y-2">
               <Button type="button" onClick={submitEvent}>
                 {selectedEvent === "" ? "Ajouter" : "Modifier"}{" "}
-                <i
-                  className={`fas fa-${
-                    selectedEvent === "" ? "plus" : "save"
-                  } icon`}
-                  aria-hidden
-                />
+                {selectedEvent === "" ? <Plus /> : <Save />}
               </Button>
               <Button
                 hidden={selectedEvent === ""}
@@ -184,7 +180,7 @@ const CalendarPage: NextPage = () => {
                 onClick={deleteEvent}
               >
                 Supprimer
-                <i className={`fas fa-trash-alt icon`} aria-hidden />
+                <Trash />
               </Button>
             </div>
           </form>

@@ -11,6 +11,7 @@ import TextArea from "@/components/TextArea/TextArea";
 import SelectStyles from "@/components/Select/SelectStyle";
 import axios from "axios";
 import ProtectedPage from "@/components/Admin/ProtectedPage";
+import { Plus, Save, Trash } from "@/components/icons";
 
 const TestimonialsPage: NextPage = () => {
   const [selectedTestimonial, setSelectedTestimonial] = useState("");
@@ -196,12 +197,7 @@ const TestimonialsPage: NextPage = () => {
             <div className="flex flex-col items-stretch space-y-2">
               <Button type="button" onClick={submitTestimonial}>
                 {selectedTestimonial === "" ? "Ajouter" : "Modifier"}{" "}
-                <i
-                  className={`fas fa-${
-                    selectedTestimonial === "" ? "plus" : "save"
-                  } icon`}
-                  aria-hidden
-                />
+                {selectedTestimonial === "" ? <Plus /> : <Save />}
               </Button>
               <Button
                 hidden={selectedTestimonial === ""}
@@ -210,7 +206,7 @@ const TestimonialsPage: NextPage = () => {
                 onClick={deleteTestimonial}
               >
                 Supprimer
-                <i className={`fas fa-trash-alt icon`} aria-hidden />
+                <Trash />
               </Button>
             </div>
           </form>

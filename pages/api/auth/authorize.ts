@@ -1,7 +1,5 @@
 import CheckSchema from "@/lib/ajv/CheckSchema";
-import SetLoginSession from "@/lib/auth/SetLoginSession";
-import { magic } from "@/lib/magic/magic";
-import AdministratorQuery from "@/lib/mongoose/queries/AdministratorQuery";
+import FindAdministrator from "@/lib/services/administrator/FindAdministrator";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async (
@@ -14,21 +12,9 @@ export default async (
     switch (method) {
       case "POST":
         if (CheckSchema(PostSchemaBody, req.body)) {
-          const adminDocument = await AdministratorQuery.findAdministrator({
-            email: req.body.email,
-          });
-
-          if (adminDocument) {
-            const didToken = req.headers.authorization?.substring(7);
-            const metadata = await magic.users.getMetadataByToken(
-              didToken as string
-            );
-            const session = { ...metadata };
-
-            await SetLoginSession(res, session);
-
-            res.status(200).send({ done: true });
-          } else throw new Error("Not Found");
+          const isAdmin = await FindAdministrator({ email: req.body.email });
+          if (isAdmin) res.status(200).end("OK");
+          else throw new Error("KO");
         } else throw new Error("Bad Request");
         break;
       default:
@@ -38,8 +24,8 @@ export default async (
   } catch (e) {
     if (e.message === "Bad Request") {
       res.status(400).end(`Bad Request`);
-    } else if (e.message === "Not Found") {
-      res.status(400).end(`Not Found`);
+    } else if (e.message === "KO") {
+      res.status(400).end(`KO`);
     } else {
       res.status(400).end(`Unknown Error`);
     }

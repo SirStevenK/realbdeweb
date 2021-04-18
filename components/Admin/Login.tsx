@@ -2,12 +2,13 @@ import { useUser } from "@/hooks/UseUser";
 import ValidateEmail from "@/lib/scripts/ValidateEmail";
 import axios from "axios";
 import { Magic } from "magic-sdk";
-import { FormEvent, useCallback, useMemo, useState } from "react";
+import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
 import { RingLoader } from "react-spinners";
 
 const Login: React.FC = () => {
   const { mutate } = useUser();
   const [emailInput, setEmailInput] = useState("");
+  const [notAllowed, setNotAllowed] = useState(false);
   const [loading, setLoading] = useState(false);
   const isEmailValid = useMemo(() => ValidateEmail(emailInput), [emailInput]);
 
@@ -16,30 +17,47 @@ const Login: React.FC = () => {
       e.preventDefault();
       setLoading(true);
 
-      const magic = new Magic(
-        process.env.NEXT_PUBLIC_MAGIC_PUBLISHABLE_KEY as string
-      );
-      const didToken = await magic.auth.loginWithMagicLink({
-        email: emailInput,
-      });
+      const allowed = await axios
+        .post("/api/auth/authorize", {
+          email: emailInput,
+        })
+        .then((res) => {
+          if (res.data === "OK") return true;
+        })
+        .catch(() => false);
 
-      axios
-        .post(
-          "/api/auth/login",
-          {},
-          {
-            headers: {
-              Authorization: "Bearer " + didToken,
-            },
-          }
-        )
-        .finally(() => {
-          mutate();
-          setLoading(false);
+      if (!allowed) {
+        setNotAllowed(true);
+        setLoading(false);
+      } else {
+        const magic = new Magic(
+          process.env.NEXT_PUBLIC_MAGIC_PUBLISHABLE_KEY as string
+        );
+        const didToken = await magic.auth.loginWithMagicLink({
+          email: emailInput,
         });
+        axios
+          .post(
+            "/api/auth/login",
+            { email: emailInput },
+            {
+              headers: {
+                Authorization: "Bearer " + didToken,
+              },
+            }
+          )
+          .finally(() => {
+            mutate();
+            setLoading(false);
+          });
+      }
     },
     [emailInput, mutate]
   );
+
+  useEffect(() => {
+    setNotAllowed(false);
+  }, [emailInput]);
 
   return (
     <form className="w-full p-2" onSubmit={Connect}>
@@ -64,6 +82,9 @@ const Login: React.FC = () => {
           <LoginButton disabled={!isEmailValid} />
         )}
       </div>
+      <span className="mt-2 block font-display text-center text-secondary">
+        {notAllowed ? "Vous n'êtes pas un administrateur du site" : ""}
+      </span>
     </form>
   );
 };
