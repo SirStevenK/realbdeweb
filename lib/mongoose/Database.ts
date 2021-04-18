@@ -7,7 +7,7 @@ class Database {
 
   constructor() {
     this.db = new Mongoose();
-    this.db.connect(mongoConnectString, {
+    this.db.connect(mongoConnectString as string, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,

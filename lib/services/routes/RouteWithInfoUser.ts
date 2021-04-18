@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import GetLoginSession from "@/lib/auth/GetLoginSession";
-import { MagicUserMetadata } from "@magic-sdk/admin";
+import { UserSessionProps } from "@/types/user";
 
 type InfoUserType = {
-  session: MagicUserMetadata | null;
+  session: UserSessionProps | null;
   isConnected: boolean;
 };
 

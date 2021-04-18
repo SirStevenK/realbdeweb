@@ -1,11 +1,11 @@
+import { UserSessionProps } from "@/types/user";
 import Iron from "@hapi/iron";
-import { MagicUserMetadata } from "@magic-sdk/admin";
 import { NextApiRequest } from "next";
 import GetTokenCookie from "../cookie/GetTokenCookie";
 
 export default async function GetLoginSession(
   req: NextApiRequest
-): Promise<MagicUserMetadata | null> {
+): Promise<UserSessionProps | null> {
   const token = GetTokenCookie(req);
 
   if (!token) return null;

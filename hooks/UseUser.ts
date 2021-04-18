@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import Router from "next/router";
 import useSWR from "swr";
 import { Fetcher } from "swr/dist/types";
-import { MagicUserMetadata } from "@magic-sdk/admin";
+import { UserSessionProps } from "@/types/user";
 
 const fetcher: Fetcher<Record<string, unknown>> = (url: string) =>
   fetch(url)
@@ -15,12 +15,15 @@ type useUserType = (props?: {
   redirectTo?: string;
   redirectIfFound?: string;
 }) => {
-  user: MagicUserMetadata | null;
+  user: UserSessionProps | null;
   mutate: () => void;
 };
 
 export const useUser: useUserType = ({ redirectTo, redirectIfFound } = {}) => {
-  const { data, error, mutate } = useSWR("/api/auth/user", fetcher);
+  const { data, error, mutate } = useSWR("/api/auth/user", fetcher, {
+    refreshInterval: 3600000, // each hour
+    refreshWhenHidden: true,
+  });
   const user = data?.user;
   const finished = Boolean(data);
   const hasUser = Boolean(user);
@@ -39,6 +42,6 @@ export const useUser: useUserType = ({ redirectTo, redirectIfFound } = {}) => {
 
   return {
     mutate,
-    user: error ? null : (user as MagicUserMetadata),
+    user: error ? null : (user as UserSessionProps),
   };
 };

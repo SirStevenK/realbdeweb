@@ -25,9 +25,9 @@ export const NavChoices: NavChoiceProps[] = [
     displayBottom: true,
   },
   {
-    type: "scroll",
+    type: "function",
     label: "Déconnexion",
-    value: "faq",
+    value: "logout",
     displayBottom: true,
   },
 ];

@@ -19,16 +19,11 @@ class MyDocument extends Document {
     return (
       <Html lang="fr">
         <Head>
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&family=Rubik:wght@400;700&display=swap"
-            rel="stylesheet"
-          />
-          <script
+          {/* <script
             async
             crossOrigin="anonymous"
-            src="https://kit.fontawesome.com/f176b2eb21.js"
-          ></script>
+            src="https://kit.fontawesome.com/7a803e3d01.js"
+          ></script> */}
           <link rel="shortcut icon" href="/images/favicon.ico" />
         </Head>
         <body>
