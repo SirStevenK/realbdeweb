@@ -1,5 +1,6 @@
 export type IconProps = {
   className?: string;
+  hidden?: boolean;
   onClick?: () => void;
   size?: number;
 };
@@ -13,6 +14,7 @@ const Base: React.FC<Props> = ({
   children,
   className,
   defaultSize,
+  hidden,
   onClick,
   size,
   viewBox,
@@ -20,6 +22,7 @@ const Base: React.FC<Props> = ({
   return (
     <svg
       className={className}
+      visibility={hidden ? "hidden" : "visible"}
       onClick={onClick}
       width={size?.toString() || defaultSize.toString()}
       height={size?.toString() || defaultSize.toString()}

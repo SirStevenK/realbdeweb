@@ -12,9 +12,9 @@ export const NavChoices: NavChoiceProps[] = [
   { type: "link", label: "Anciens Étudiants", value: "/admin/testimonials" },
   { type: "link", label: "FAQ", value: "/admin/questions" },
   {
-    type: "scroll",
+    type: "link",
     label: "Utilisateurs",
-    value: "saves",
+    value: "/admin/users",
     displayBottom: true,
   },
   { type: "scroll", label: "Sauvegardes", value: "saves", displayBottom: true },

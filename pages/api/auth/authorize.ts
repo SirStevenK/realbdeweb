@@ -12,7 +12,9 @@ export default async (
     switch (method) {
       case "POST":
         if (CheckSchema(PostSchemaBody, req.body)) {
-          const isAdmin = await FindAdministrator({ email: req.body.email });
+          const isAdmin = await FindAdministrator({
+            email: (req.body.email as string).toLowerCase(),
+          });
           if (isAdmin) res.status(200).end("OK");
           else throw new Error("KO");
         } else throw new Error("Bad Request");

@@ -37,10 +37,14 @@ class AdministratorQuery {
   async addAdministrator(
     administrator: AdministratorElementProps
   ): Promise<boolean> {
-    const document = await this.model.create(administrator);
-
-    if (document) return true;
-    else return false;
+    const alreadyExists = Boolean(
+      await this.model.findOne({ email: administrator.email })
+    );
+    if (!alreadyExists) {
+      const document = await this.model.create(administrator);
+      if (document) return true;
+    }
+    return false;
   }
 
   async deleteAdministrator(id: string): Promise<boolean> {

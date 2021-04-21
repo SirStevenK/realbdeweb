@@ -15,7 +15,7 @@ export default async (
       case "POST":
         if (CheckSchema(PostSchemaBody, req.body)) {
           const adminDocument = await AdministratorQuery.findAdministrator({
-            email: req.body.email,
+            email: (req.body.email as string).toString(),
           });
 
           if (adminDocument) {

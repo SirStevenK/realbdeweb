@@ -15,7 +15,7 @@ export default RouteWithInfoUser(async (req, res, { isConnected }) => {
     case "PUT":
       if (!isConnected) throw "Not Connected";
       if (CheckSchema(SchemaBodyUpdateIntroduction, req.body)) {
-        const done = UpdateIntroduction(req.body.content);
+        const done = await UpdateIntroduction(req.body.content);
         if (done) res.status(200).end();
         else throw "Failed";
         break;
