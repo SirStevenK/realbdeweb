@@ -5,7 +5,7 @@ import { CalendarElementProps } from "@/types/utils";
 import { listMonthsFR } from "@/types/date";
 import { Fragment, useMemo } from "react";
 import mq from "@/styles/mq";
-import { Check } from "../icons";
+import { Check } from "@/components/icons";
 
 const Wrapper = styled.div({
   maxWidth: "800px",

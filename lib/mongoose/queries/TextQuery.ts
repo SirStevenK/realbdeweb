@@ -1,5 +1,5 @@
 import { TextProps } from "@/types/utils";
-import { Document, Model, Schema } from "mongoose";
+import mongoose, { Document, Model, Schema } from "mongoose";
 import Database from "../Database";
 
 const TextSchema = new Schema({
@@ -7,7 +7,7 @@ const TextSchema = new Schema({
   content: String,
 });
 
-export type TEXT_DOC = Document<string> & TextProps;
+export type TEXT_DOC = Document<mongoose.Types.ObjectId> & TextProps;
 
 class TextQuery {
   private model: Model<TEXT_DOC>;

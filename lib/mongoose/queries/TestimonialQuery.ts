@@ -1,5 +1,5 @@
 import { TestomonialElementProps } from "@/types/utils";
-import { Document, Model, Schema } from "mongoose";
+import mongoose, { Document, Model, Schema } from "mongoose";
 import Database from "../Database";
 
 const TestimonialSchema = new Schema({
@@ -9,7 +9,8 @@ const TestimonialSchema = new Schema({
   lastname: String,
 });
 
-export type TESTIMONIAL_DOC = Document<string> & TestomonialElementProps;
+export type TESTIMONIAL_DOC = Document<mongoose.Types.ObjectId> &
+  TestomonialElementProps;
 
 class TestimonialQuery {
   private model: Model<TESTIMONIAL_DOC>;

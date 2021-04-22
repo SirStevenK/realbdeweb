@@ -1,5 +1,5 @@
 import colors from "@/styles/colors.json";
-import { AngleDoubleRight } from "../icons";
+import { AngleDoubleRight } from "@/components/icons";
 
 type Props = {
   color?: string;

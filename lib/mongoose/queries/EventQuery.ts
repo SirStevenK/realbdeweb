@@ -1,5 +1,5 @@
 import { CalendarElementProps } from "@/types/utils";
-import { Document, Model, Schema } from "mongoose";
+import mongoose, { Document, Model, Schema } from "mongoose";
 import Database from "../Database";
 
 const EventSchema = new Schema({
@@ -7,7 +7,8 @@ const EventSchema = new Schema({
   name: String,
 });
 
-export type EVENT_DOC = Document<string> & CalendarElementProps;
+export type EVENT_DOC = Document<mongoose.Types.ObjectId> &
+  CalendarElementProps;
 
 class QuestionQuery {
   private model: Model<EVENT_DOC>;

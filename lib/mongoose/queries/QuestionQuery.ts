@@ -1,5 +1,5 @@
 import { QuestionElementProps } from "@/types/utils";
-import { Document, Model, Schema } from "mongoose";
+import mongoose, { Document, Model, Schema } from "mongoose";
 import Database from "../Database";
 
 const QuestionSchema = new Schema({
@@ -7,7 +7,8 @@ const QuestionSchema = new Schema({
   answer: String,
 });
 
-export type QUESTION_DOC = Document<string> & QuestionElementProps;
+export type QUESTION_DOC = Document<mongoose.Types.ObjectId> &
+  QuestionElementProps;
 
 class QuestionQuery {
   private model: Model<QUESTION_DOC>;

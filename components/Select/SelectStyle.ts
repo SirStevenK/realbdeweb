@@ -28,6 +28,10 @@ const styles: Partial<
     ...provided,
     fontFamily: fontFamily.display.join(","),
   }),
+  menu: (provided) => ({
+    ...provided,
+    zIndex: 10,
+  }),
 };
 
 export default styles;

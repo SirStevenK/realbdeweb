@@ -11,6 +11,7 @@ export const NavChoices: NavChoiceProps[] = [
   { type: "link", label: "Calendrier", value: "/admin/calendar" },
   { type: "link", label: "Anciens Étudiants", value: "/admin/testimonials" },
   { type: "link", label: "FAQ", value: "/admin/questions" },
+  { type: "link", label: "Emails", value: "/admin/email" },
   {
     type: "link",
     label: "Utilisateurs",

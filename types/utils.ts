@@ -1,3 +1,12 @@
+import { OutputData } from "@editorjs/editorjs";
+
+export type NavChoiceProps = {
+  type: "link" | "scroll" | "function";
+  label: string;
+  value: string;
+  displayBottom?: boolean;
+};
+
 export type MainContentProps = {
   introduction: string;
   events: CalendarElementProps[];
@@ -6,6 +15,7 @@ export type MainContentProps = {
 };
 
 export type TextProps = {
+  _id?: string;
   type: string;
   content: string;
 };
@@ -35,14 +45,16 @@ export type AdministratorElementProps = {
   email: string;
 };
 
-export type NavChoiceProps = {
-  type: "link" | "scroll" | "function";
-  label: string;
-  value: string;
-  displayBottom?: boolean;
+export type EmailProps = {
+  _id?: string;
+  title: string;
+  to: string;
+  content: OutputData;
+  sended?: string;
 };
 
 export type SaveProps = {
+  _id?: string;
   date: string;
   message: string;
   content: unknown;

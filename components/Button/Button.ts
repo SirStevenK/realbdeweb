@@ -2,8 +2,8 @@ import styled from "@emotion/styled";
 import colors from "@/styles/colors.json";
 import fontFamily from "@/styles/fontFamily.json";
 
-const Button = styled.button(({ color }) => ({
-  display: "flex",
+const Button = styled.button(({ color, hidden }) => ({
+  display: hidden ? "none" : "flex",
   margin: "0 auto",
   alignItems: "center",
   outline: "none!important",

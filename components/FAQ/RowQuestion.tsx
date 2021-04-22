@@ -1,7 +1,7 @@
 import colors from "@/styles/colors.json";
 import styled from "@emotion/styled";
 import { useState } from "react";
-import { Minus, Plus } from "../icons";
+import { Minus, Plus } from "@/components/icons";
 
 const WrapperRow = styled.div({
   paddingLeft: "20px",

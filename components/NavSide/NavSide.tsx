@@ -1,13 +1,13 @@
 import MobileContext from "@/contexts/MobileContext";
 import mq, { breakpoints } from "@/styles/mq";
 import styled from "@emotion/styled";
-import NextImage from "next/image";
 import Link from "next/link";
 import Scroll from "react-scroll";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { NavChoiceProps } from "@/types/utils";
 import NavChoice from "./NavChoice";
-import { Discord, Facebook, Instagram } from "../icons";
+import { Discord, Facebook, Instagram } from "@/components/icons";
+import Image from "@/components/Image/Image";
 
 const Wrapper = styled.div({
   width: "250px",
@@ -95,9 +95,9 @@ const NavSide: React.FC<Props> = ({
     >
       <div className={`flex flex-col h-full items-center py-4`}>
         <div className={`${innerHeight > 480 ? "block" : "hidden"}`}>
-          <NextImage
-            src="/images/logofox_short.png"
-            alt="icone Mr EsKa"
+          <Image
+            src="/logofox_short.png"
+            alt="Logo du BDE"
             height={140}
             width={107}
           />

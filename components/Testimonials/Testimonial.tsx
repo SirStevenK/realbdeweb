@@ -1,6 +1,6 @@
 import { QuoteLeft } from "@/components/icons";
 import { TestomonialElementProps } from "@/types/utils";
-import NextImage from "next/image";
+import Image from "@/components/Image/Image";
 type Props = {
   content: TestomonialElementProps;
 };
@@ -22,12 +22,12 @@ const Testimonial: React.FC<Props> = ({
         <p className="pr-2 font-body text-sm md:text-base">{content}</p>
       </div>
       <div className="flex justify-center items-center p-2 bg-primary bg-opacity-25">
-        <NextImage
+        <Image
           className="rounded-full overflow-hidden shadow-TESTIMONIAL-PIC"
-          src="/images/sampropic.png"
+          src="/sampropic.png"
           alt=""
-          height={"64px"}
-          width={"64px"}
+          height={64}
+          width={64}
         />
         <div className="ml-4">
           <span className="block text-primary font-display font-bold">

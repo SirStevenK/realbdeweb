@@ -1,12 +1,13 @@
 import { AdministratorElementProps } from "@/types/utils";
-import { Document, Model, Schema } from "mongoose";
+import mongoose, { Document, Model, Schema } from "mongoose";
 import Database from "../Database";
 
 const AdministratorSchema = new Schema({
   email: String,
 });
 
-export type ADMINISTRATOR_DOC = Document<string> & AdministratorElementProps;
+export type ADMINISTRATOR_DOC = Document<mongoose.Types.ObjectId> &
+  AdministratorElementProps;
 
 class AdministratorQuery {
   private model: Model<ADMINISTRATOR_DOC>;

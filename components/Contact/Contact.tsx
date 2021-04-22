@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
-import InputText from "../InputText/InputText";
-import TextArea from "../TextArea/TextArea";
-import Button from "../Button/Button";
-import { PaperPlane } from "../icons";
+import InputText from "@/components/InputText/InputText";
+import TextArea from "@/components/TextArea/TextArea";
+import Button from "@/components/Button/Button";
+import { PaperPlane } from "@/components/icons";
 
 const Wrapper = styled.form({
   width: "100%",

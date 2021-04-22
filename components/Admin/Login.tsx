@@ -3,7 +3,7 @@ import ValidateEmail from "@/lib/scripts/ValidateEmail";
 import axios from "axios";
 import { Magic } from "magic-sdk";
 import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
-import InputAdmin from "../InputAdmin/InputAdmin";
+import InputAdmin from "@/components/InputAdmin/InputAdmin";
 
 const Login: React.FC = () => {
   const { mutate } = useUser();
