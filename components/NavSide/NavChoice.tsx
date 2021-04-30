@@ -16,6 +16,7 @@ const NavChoice: React.FC<Props> = ({
   scrollTo,
 }) => {
   const { mutate } = useUser();
+
   const handleClick = () => {
     if (type === "scroll") scrollTo(value);
     else if (type === "function") {

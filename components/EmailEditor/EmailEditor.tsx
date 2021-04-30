@@ -3,7 +3,6 @@ import { API, OutputData } from "@editorjs/editorjs";
 import styled from "@emotion/styled";
 import { EDITOR_JS_TOOLS } from "@/lib/editorjs/tools";
 import colors from "@/styles/colors.json";
-import fontFamily from "@/styles/fontFamily.json";
 
 type Props = {
   data: OutputData;
@@ -19,9 +18,11 @@ const Wrapper = styled.div({
     border: `3px solid ${colors.gray}`,
     borderRadius: "0.5rem",
     color: colors.dark,
-    fontFamily: fontFamily.body.join(","),
+    fontFamily: "Ubuntu,Helvetica,Arial,sans-serif",
     padding: "15px",
     outline: "none",
+    textAlign: "center",
+
     "::placeholder": {
       color: colors.gray,
     },
@@ -29,9 +30,17 @@ const Wrapper = styled.div({
       border: `3px solid ${colors.primary}CC`,
     },
     "h1, h2, h3, h4, h5, h6": {
-      fontFamily: fontFamily.display.join(","),
       fontWeight: "bold",
     },
+    h1: {
+      fontSize: "24px",
+    },
+    h2: {
+      fontSize: "20px",
+    },
+  },
+  ".codex-editor--narrow .codex-editor__redactor": {
+    margin: "0 50px",
   },
 });
 

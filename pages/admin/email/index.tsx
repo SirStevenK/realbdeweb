@@ -70,8 +70,7 @@ const EmailPage: NextPage = () => {
     } else {
       if (selectedEmail) {
         return await axios
-          .put(`/api/email/${selectedEmail}`, email)
-          .then(resetSelectedEmail)
+          .put<string>(`/api/email/${selectedEmail}`, email)
           .then(getEmails)
           .then(() => selectedEmail)
           .catch(() => {
@@ -83,8 +82,8 @@ const EmailPage: NextPage = () => {
         return await axios
           .post<string>(`/api/email`, email)
           .then((res) => (email_id = res.data))
-          .then(resetSelectedEmail)
           .then(getEmails)
+          .then(() => setSelectedEmail(email_id))
           .then(() => email_id)
           .catch(() => {
             alert("L'élement n'a pas pu être ajouté");
@@ -92,7 +91,7 @@ const EmailPage: NextPage = () => {
           });
       }
     }
-  }, [email, selectedEmail, getEmails, resetSelectedEmail]);
+  }, [email, selectedEmail, getEmails]);
 
   const submitEmail = useCallback(async () => {
     if (!confirm("Valider l'envoi")) return;
@@ -176,6 +175,7 @@ const EmailPage: NextPage = () => {
               />
               <InputText
                 className="font-body"
+                type="text"
                 onChange={(e) => setValueInputTitle(e.currentTarget.value)}
                 placeholder="Titre de l'email"
                 value={valueInputTitle}

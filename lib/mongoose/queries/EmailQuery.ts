@@ -12,7 +12,7 @@ const EmailSchema = new Schema({
 
 export type EMAIL_DOC = Document<mongoose.Types.ObjectId> & EmailProps;
 
-class QuestionQuery {
+class EmailQuery {
   private model: Model<EMAIL_DOC>;
 
   constructor() {
@@ -62,4 +62,4 @@ class QuestionQuery {
   }
 }
 
-export default new QuestionQuery();
+export default new EmailQuery();

@@ -13,5 +13,8 @@ declare namespace NodeJS {
 
     MAX_AGE?: string;
     TOKEN_NAME?: string;
+
+    WEBSITE_EMAIL?: string;
+    WEBSITE_EMAIL_PASSWORD?: string;
   }
 }

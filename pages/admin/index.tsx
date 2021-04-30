@@ -41,7 +41,7 @@ const AdminPage: NextPage = () => {
       <NextSeo title="Admin - BDE EvryBody" noindex nofollow />
       <MainDisplay
         background="secondary"
-        choices={user ? NavChoices : [NavChoices[6]]}
+        choices={user ? NavChoices : [NavChoices[7]]}
         hideSocialIcons
       >
         <div className="absolute top-0 left-0 h-full w-full flex items-center">

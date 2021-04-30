@@ -38,7 +38,7 @@ export const EDITOR_JS_TOOLS = {
     class: Header,
     config: {
       placeholder: "Enter a header",
-      levels: [1, 2, 3, 4, 5, 6],
+      levels: [1, 2],
       defaultLevel: 1,
     },
   },

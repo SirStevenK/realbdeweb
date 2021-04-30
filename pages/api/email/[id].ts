@@ -1,10 +1,13 @@
 import CheckSchema from "@/lib/ajv/CheckSchema";
+import GenerateEmailHtml from "@/lib/email/GenerateEmailHtml";
+import SendMail from "@/lib/email/SendMail";
 import DeleteEmail from "@/lib/services/email/DeleteEmail";
 import GetEmailByID from "@/lib/services/email/GetEmailById";
 import UpdateEmail, {
   SchemaBodyUpdateEmail,
 } from "@/lib/services/email/UpdateEmail";
 import RouteWithInfoUser from "@/lib/services/routes/RouteWithInfoUser";
+import mjml2html from "mjml";
 
 export default RouteWithInfoUser(async (req, res, { isConnected }) => {
   const {
@@ -24,9 +27,16 @@ export default RouteWithInfoUser(async (req, res, { isConnected }) => {
         } else throw new Error("Not Exist");
       } else throw new Error("Bad Request");
     case "POST":
-      // Send email
-      res.status(200).end();
-      break;
+      if (isIdValid) {
+        const email = await GetEmailByID(id as string);
+        if (email) {
+          const content = mjml2html(GenerateEmailHtml(email.content.blocks))
+            .html;
+          await SendMail(email.title, email.to, content);
+          res.status(200).end();
+          break;
+        } else throw new Error("Not Exist");
+      } else throw new Error("Bad Request");
     case "PUT":
       if (!isConnected) throw "Not Connected";
       if (isIdValid && CheckSchema(SchemaBodyUpdateEmail, req.body)) {
@@ -44,7 +54,7 @@ export default RouteWithInfoUser(async (req, res, { isConnected }) => {
         break;
       } else throw new Error("Bad Request");
     default:
-      res.setHeader("Allow", ["GET", "PUT", "DELETE"]);
+      res.setHeader("Allow", ["GET", "POST", "PUT", "DELETE"]);
       res.status(405).end(`Method ${method} Not Allowed`);
   }
 });

@@ -29,7 +29,7 @@ export default function RouteWithInfoUser(
         isConnected: Boolean(session),
         session,
       };
-      return callback(req, res, infoUser);
+      return await callback(req, res, infoUser);
     } catch (e) {
       if (e.message === "Bad Request") {
         res.status(400).end(`Bad Request`);
@@ -40,7 +40,7 @@ export default function RouteWithInfoUser(
       } else if (e.message === "Not Connected") {
         res.status(401).end(`Not Connected`);
       } else {
-        res.status(400).end(`Unknown Error`);
+        res.status(400).end(e.message || `Unknown Error`);
       }
     }
   };
