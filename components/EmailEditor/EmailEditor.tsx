@@ -104,7 +104,6 @@ const ContentEditor: React.FC<Props> = ({ data, onChange = () => null }) => {
         tools={EDITOR_JS_TOOLS}
         data={AddPrefix(data)}
         onChange={(api: API, data?: BlockAPI | OutputData) => {
-          console.log(data);
           if (data) {
             if ((data as OutputData).blocks)
               onChange(RemovePrefix(data as OutputData));
