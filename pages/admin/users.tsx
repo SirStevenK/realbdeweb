@@ -20,9 +20,10 @@ const UserPage: NextPage = () => {
   const [loading, setLoading] = useState(false);
   const [alreadyExists, setAlreadyExists] = useState(false);
 
-  const isEmailValid = useMemo(() => ValidateEmail(newAdminInput), [
-    newAdminInput,
-  ]);
+  const isEmailValid = useMemo(
+    () => ValidateEmail(newAdminInput),
+    [newAdminInput]
+  );
 
   const getAdministrators = useCallback(() => {
     axios

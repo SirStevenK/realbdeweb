@@ -1,20 +1,24 @@
 import { QuoteLeft } from "@/components/icons";
 import { TestomonialElementProps } from "@/types/utils";
 import Image from "@/components/Image/Image";
+
 type Props = {
   content: TestomonialElementProps;
+  hidden?: boolean;
 };
 
 const Testimonial: React.FC<Props> = ({
   content: { content, description, firstname, lastname },
+  hidden = false,
 }) => {
   return (
     <div
-      className="rounded-md overflow-hidden bg-white"
+      className={`rounded-md overflow-hidden bg-white ${
+        hidden ? "opacity-0 hidden" : "animate-fadein opacity-100"
+      }`}
       style={{
         boxShadow: "0 0 6px 3px rgba(0, 0, 0, 0.3)",
-        minWidth: "280px",
-        maxWidth: "540px",
+        width: "100%",
       }}
     >
       <div className="ml-2 py-3 px-2 space-y-2">

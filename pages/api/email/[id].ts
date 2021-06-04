@@ -30,8 +30,9 @@ export default RouteWithInfoUser(async (req, res, { isConnected }) => {
       if (isIdValid) {
         const email = await GetEmailByID(id as string);
         if (email) {
-          const content = mjml2html(GenerateEmailHtml(email.content.blocks))
-            .html;
+          const content = mjml2html(
+            GenerateEmailHtml(email.content.blocks)
+          ).html;
           await SendMail(email.title, email.to, content);
           res.status(200).end();
           break;

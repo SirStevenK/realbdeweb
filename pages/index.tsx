@@ -41,33 +41,34 @@ const HomePage: NextPage<MainContentProps> = ({
   );
 };
 
-export const getServerSideProps: GetServerSideProps<MainContentProps> = async () => {
-  let props: MainContentProps = {
-    events: [],
-    introduction: "",
-    questions: [],
-    testimonials: [],
-  };
+export const getServerSideProps: GetServerSideProps<MainContentProps> =
+  async () => {
+    let props: MainContentProps = {
+      events: [],
+      introduction: "",
+      questions: [],
+      testimonials: [],
+    };
 
-  await Promise.all([
-    GetEvents(),
-    GetIntroduction(),
-    GetQuestions(),
-    GetTestimonials(),
-  ])
-    .then((values) => {
-      props = {
-        events: values[0].map(RemoveObjectID),
-        introduction: values[1],
-        questions: values[2].map(RemoveObjectID),
-        testimonials: values[3].map(RemoveObjectID),
-      };
-    })
-    .catch();
+    await Promise.all([
+      GetEvents(),
+      GetIntroduction(),
+      GetQuestions(),
+      GetTestimonials(),
+    ])
+      .then((values) => {
+        props = {
+          events: values[0].map(RemoveObjectID),
+          introduction: values[1],
+          questions: values[2].map(RemoveObjectID),
+          testimonials: values[3].map(RemoveObjectID),
+        };
+      })
+      .catch();
 
-  return {
-    props,
+    return {
+      props,
+    };
   };
-};
 
 export default HomePage;

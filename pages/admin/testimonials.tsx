@@ -113,14 +113,10 @@ const TestimonialsPage: NextPage = () => {
       setValueInputFirstName("");
       setValueInputLastName("");
     } else {
-      const {
-        content,
-        description,
-        firstname,
-        lastname,
-      } = listTestimonials.find(
-        ({ _id }) => _id === selectedTestimonial
-      ) as TestomonialElementProps;
+      const { content, description, firstname, lastname } =
+        listTestimonials.find(
+          ({ _id }) => _id === selectedTestimonial
+        ) as TestomonialElementProps;
       setValueInputContent(content);
       setValueInputDescription(description);
       setValueInputFirstName(firstname);
