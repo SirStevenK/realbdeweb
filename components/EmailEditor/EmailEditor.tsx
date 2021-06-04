@@ -1,5 +1,5 @@
 import EditorJS from "react-editor-js";
-import { API, OutputData } from "@editorjs/editorjs";
+import { API, BlockAPI, OutputData } from "@editorjs/editorjs";
 import styled from "@emotion/styled";
 import { EDITOR_JS_TOOLS } from "@/lib/editorjs/tools";
 import colors from "@/styles/colors.json";
@@ -103,9 +103,13 @@ const ContentEditor: React.FC<Props> = ({ data, onChange = () => null }) => {
         holder="bdeweb-editor"
         tools={EDITOR_JS_TOOLS}
         data={AddPrefix(data)}
-        onChange={(api: API, data?: OutputData) =>
-          data && onChange(RemovePrefix(data))
-        }
+        onChange={(api: API, data?: BlockAPI | OutputData) => {
+          console.log(data);
+          if (data) {
+            if ((data as OutputData).blocks)
+              onChange(RemovePrefix(data as OutputData));
+          }
+        }}
       >
         <div
           id="bdeweb-editor"
