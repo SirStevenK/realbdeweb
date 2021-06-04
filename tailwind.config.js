@@ -15,7 +15,7 @@ module.exports = {
     fontWeight,
     extend: {
       animation: {
-        fadein: "fadein 0.5s ease-in-out",
+        fadein: "fadein 1s ease-in-out",
       },
       keyframes: {
         fadein: {
