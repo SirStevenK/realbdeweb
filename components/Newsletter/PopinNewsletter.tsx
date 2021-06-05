@@ -1,16 +1,35 @@
 import PopinNewsletterContext from "@/contexts/PopinNewsletterContext";
-import { useContext } from "react";
-import Times from "../icons/Times";
+import ValidateEmail from "@/lib/scripts/ValidateEmail";
+import axios from "axios";
+import { useCallback, useContext, useState } from "react";
+import { CheckCircle } from "../icons";
+import { Times } from "../icons";
 import RowSocials from "../Social/RowSocials";
 
-type Props = {
-  hidden?: boolean;
-};
-
-const PopinNewsletter: React.FC<Props> = ({ hidden }) => {
+const PopinNewsletter: React.FC = () => {
+  const [email, setEmail] = useState("");
+  const [sended, setSended] = useState(false);
   const { displayNewsletter, setDisplayNewsletter } = useContext(
     PopinNewsletterContext
   );
+  const [errors, setErrors] = useState<string[]>([]);
+
+  const Subscribe = useCallback(() => {
+    if ([email].every((e) => e.length > 0) && ValidateEmail(email))
+      axios
+        .post("/api/subscriber", { email })
+        .then(() => setSended(true))
+        .catch(() => alert("Votre email n'a pas pu être enregistré"))
+        .finally(() => setErrors([]));
+    else {
+      setErrors(() => {
+        const errors: string[] = [];
+        if (email.length === 0 || !ValidateEmail(email)) errors.push("email");
+        return errors;
+      });
+    }
+  }, [email]);
+
   return (
     <div
       className={`${
@@ -46,16 +65,36 @@ const PopinNewsletter: React.FC<Props> = ({ hidden }) => {
             événements.
           </span>
 
-          <form className="flex flex-col space-y-4 mt-4">
+          <form
+            className="flex flex-col space-y-4 mt-4"
+            onSubmit={(e) => {
+              Subscribe();
+              e.preventDefault();
+            }}
+          >
             <input
               type="email"
-              className="font-body py-2 px-2 border border-primary"
+              className={`font-body py-2 px-2 border ${
+                errors.includes("email") ? "border-warning" : "border-primary"
+              }`}
               placeholder="Adresse Email"
+              disabled={sended}
+              value={email}
+              onChange={(e) => setEmail(e.currentTarget.value)}
             />
             <input
               type="submit"
-              className="bg-primary text-light font-display font-bold py-2 "
+              className={`bg-primary cursor-pointer text-light font-display font-bold py-2 ${
+                sended ? "hidden" : "block"
+              }`}
             />
+            <span
+              className={`flex items-center justify-center text-lg font-display ${
+                sended ? "block" : "hidden"
+              }`}
+            >
+              Envoyé <CheckCircle className="ml-2" />
+            </span>
           </form>
 
           <div className="py-4 flex justify-center">

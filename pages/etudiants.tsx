@@ -9,6 +9,9 @@ import {
 import RemoveObjectID from "@/lib/scripts/RemoveObjectID";
 import GetTestimonials from "@/lib/services/testimonial/GetTestimonials";
 import Testimonial from "@/components/Testimonials/Testimonial";
+import PopinNewsletter from "@/components/Newsletter/PopinNewsletter";
+import PopinNewsletterContext from "@/contexts/PopinNewsletterContext";
+import { useState } from "react";
 
 export const NavChoices: NavChoiceProps[] = [
   { type: "link", label: "Présentation", value: "/#intro" },
@@ -23,8 +26,12 @@ type Props = {
 };
 
 const HomePage: NextPage<MainContentProps> = ({ testimonials }) => {
+  const [displayNewsletter, setDisplayNewsletter] = useState(false);
+
   return (
-    <>
+    <PopinNewsletterContext.Provider
+      value={{ displayNewsletter, setDisplayNewsletter }}
+    >
       <NextSeo
         title="Anciens Etudiants - BDE EvryBody"
         description="Liste témoignages des anciens étudiants"
@@ -44,7 +51,8 @@ const HomePage: NextPage<MainContentProps> = ({ testimonials }) => {
           ))}
         </div>
       </MainDisplay>
-    </>
+      <PopinNewsletter />
+    </PopinNewsletterContext.Provider>
   );
 };
 

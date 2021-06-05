@@ -59,3 +59,17 @@ export type SaveProps = {
   message: string;
   content: unknown;
 };
+
+export type ContactProps = {
+  _id?: string;
+  date: string;
+  name: string;
+  email: string;
+  message: string;
+};
+
+export type SubscriberProps = {
+  _id?: string;
+  date: string;
+  email: string;
+};

@@ -3,6 +3,9 @@ import InputText from "@/components/InputText/InputText";
 import TextArea from "@/components/TextArea/TextArea";
 import Button from "@/components/Button/Button";
 import { PaperPlane } from "@/components/icons";
+import colors from "@/styles/colors.json";
+import { useCallback, useState } from "react";
+import axios from "axios";
 
 const Wrapper = styled.form({
   width: "100%",
@@ -10,6 +13,34 @@ const Wrapper = styled.form({
 });
 
 const Contact: React.FC = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [errors, setErrors] = useState<string[]>([]);
+
+  const SendContact = useCallback(() => {
+    if ([name, email, message].every((e) => e.length > 0))
+      axios
+        .post("/api/contact", { name, email, message })
+        .then(() => alert("Votre message a bien été envoyé"))
+        .then(() => {
+          setName("");
+          setEmail("");
+          setMessage("");
+        })
+        .catch(() => alert("Votre message n'a pas pu être envoyé"))
+        .finally(() => setErrors([]));
+    else {
+      setErrors(() => {
+        const errors: string[] = [];
+        if (name.length === 0) errors.push("name");
+        if (email.length === 0) errors.push("email");
+        if (message.length === 0) errors.push("message");
+        return errors;
+      });
+    }
+  }, [name, email, message]);
+
   return (
     <div id="contact" className="flex flex-col items-center pt-2 pb-6 px-3">
       <h1 className="font-display font-bold text-2xl text-primary text-center">
@@ -17,11 +48,31 @@ const Contact: React.FC = () => {
       </h1>
       <Wrapper
         className="flex flex-col space-y-2 mt-4"
-        onSubmit={(event) => event.preventDefault()}
+        onSubmit={(event) => {
+          SendContact();
+          event.preventDefault();
+        }}
       >
-        <InputText type="text" placeholder="Votre nom" />
-        <InputText type="email" placeholder="Votre email" />
-        <TextArea placeholder="Votre message" />
+        <InputText
+          colorBorder={errors.includes("name") ? colors.warning : undefined}
+          type="text"
+          placeholder="Votre nom"
+          value={name}
+          onChange={(e) => setName(e.currentTarget.value)}
+        />
+        <InputText
+          colorBorder={errors.includes("email") ? colors.warning : undefined}
+          type="email"
+          placeholder="Votre email"
+          value={email}
+          onChange={(e) => setEmail(e.currentTarget.value)}
+        />
+        <TextArea
+          colorBorder={errors.includes("message") ? colors.warning : undefined}
+          placeholder="Votre message"
+          value={message}
+          onChange={(e) => setMessage(e.currentTarget.value)}
+        />
         <div className="flex justify-center">
           <Button type="submit">
             Envoyer <PaperPlane />

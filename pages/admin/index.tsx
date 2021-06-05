@@ -18,7 +18,7 @@ export const NavChoices: NavChoiceProps[] = [
     value: "/admin/users",
     displayBottom: true,
   },
-  { type: "scroll", label: "Sauvegardes", value: "saves", displayBottom: true },
+  // { type: "scroll", label: "Sauvegardes", value: "saves", displayBottom: true },
   {
     type: "link",
     label: "Voir le site",
