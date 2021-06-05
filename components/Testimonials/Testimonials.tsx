@@ -1,4 +1,5 @@
 import { TestomonialElementProps } from "@/types/utils";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import ArrowLeft from "../icons/ArrowLeft";
 import ArrowRight from "../icons/ArrowRight";
@@ -28,9 +29,13 @@ const Testimonials: React.FC<Props> = ({ listTestimonials }) => {
             maxWidth: "540px",
           }}
         >
-          <h1 className="font-display font-bold text-2xl text-primary text-center hover:underline hover:cursor-pointer">
-            Anciens Étudiants
-          </h1>
+          <Link href="/etudiants">
+            <a>
+              <h2 className="font-display font-bold text-2xl text-primary text-center hover:underline hover:cursor-pointer">
+                Anciens Étudiants
+              </h2>
+            </a>
+          </Link>
           <div className="mt-6 px-4 w-full flex justify-center">
             {listTestimonials.map((testimonial, index) => (
               <Testimonial

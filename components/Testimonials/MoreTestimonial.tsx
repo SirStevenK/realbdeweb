@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 type Props = {
   hidden?: boolean;
 };
@@ -14,9 +16,11 @@ const MoreTestimonial: React.FC<Props> = ({ hidden = false }) => {
         height: "232px",
       }}
     >
-      <span className="px-4 py-2 border-2 border-primary rounded-md font-bold text-primary cursor-pointer hover:bg-primary hover:bg-opacity-10">
-        Voir tous les témoignages
-      </span>
+      <Link href="/etudiants">
+        <a className="px-4 py-2 border-2 border-primary rounded-md font-display font-bold text-primary cursor-pointer hover:bg-primary hover:bg-opacity-10">
+          Voir tous les témoignages
+        </a>
+      </Link>
     </div>
   );
 };
