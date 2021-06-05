@@ -8,6 +8,8 @@ import { NavChoiceProps } from "@/types/utils";
 import NavChoice from "./NavChoice";
 import { Discord, Facebook, Instagram } from "@/components/icons";
 import Image from "@/components/Image/Image";
+import RowSocials from "../Social/RowSocials";
+import PopinNewsletterContext from "@/contexts/PopinNewsletterContext";
 
 const Wrapper = styled.div({
   width: "250px",
@@ -38,6 +40,7 @@ const NavSide: React.FC<Props> = ({
   hideSocialIcons,
 }) => {
   const { statusMenu, hideMobileMenu } = useContext(MobileContext);
+  const { setDisplayNewsletter } = useContext(PopinNewsletterContext);
   const [innerHeight, setInnerHeight] = useState(0);
   const [innerWidth, setInnerWidth] = useState(0);
   const [scrollY, setScrollY] = useState(0);
@@ -122,33 +125,15 @@ const NavSide: React.FC<Props> = ({
             </li>
           ))}
         </ul>
-        <ul
-          className={`flex space-x-4 mt-4 ${
+        <span
+          className={`${
             hideSocialIcons ? "hidden" : "block"
-          }`}
+          } select-none font-body text-light hover:underline hover:cursor-pointer mb-1`}
+          onClick={() => setDisplayNewsletter(true)}
         >
-          <li className="text-light text-2xl font-display font-bold text-center cursor-pointer">
-            <Link href="https://www.facebook.com/EvryBodyMiage">
-              <a target="_new">
-                <Facebook />
-              </a>
-            </Link>
-          </li>
-          <li className="text-light text-2xl font-display font-bold text-center cursor-pointer">
-            <Link href="https://www.instagram.com/evrybody_miage">
-              <a target="_new">
-                <Instagram />
-              </a>
-            </Link>
-          </li>
-          <li className="text-light text-2xl font-display font-bold text-center cursor-pointer">
-            <Link href="https://discord.gg/W55yuxNjYS">
-              <a target="_new">
-                <Discord />
-              </a>
-            </Link>
-          </li>
-        </ul>
+          Rejoignez notre newsletter
+        </span>
+        <RowSocials hidden={hideSocialIcons} />
       </div>
     </Wrapper>
   );
