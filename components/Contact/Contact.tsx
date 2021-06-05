@@ -6,6 +6,7 @@ import { PaperPlane } from "@/components/icons";
 import colors from "@/styles/colors.json";
 import { useCallback, useState } from "react";
 import axios from "axios";
+import ValidateEmail from "@/lib/scripts/ValidateEmail";
 
 const Wrapper = styled.form({
   width: "100%",
@@ -19,7 +20,10 @@ const Contact: React.FC = () => {
   const [errors, setErrors] = useState<string[]>([]);
 
   const SendContact = useCallback(() => {
-    if ([name, email, message].every((e) => e.length > 0))
+    if (
+      [name, email, message].every((e) => e.length > 0) &&
+      ValidateEmail(email)
+    )
       axios
         .post("/api/contact", { name, email, message })
         .then(() => alert("Votre message a bien été envoyé"))
@@ -34,7 +38,7 @@ const Contact: React.FC = () => {
       setErrors(() => {
         const errors: string[] = [];
         if (name.length === 0) errors.push("name");
-        if (email.length === 0) errors.push("email");
+        if (email.length === 0 || !ValidateEmail(email)) errors.push("email");
         if (message.length === 0) errors.push("message");
         return errors;
       });
