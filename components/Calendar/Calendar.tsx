@@ -162,9 +162,9 @@ const Calendar: React.FC<Props> = ({ listEvents }) => {
   }, []);
   return (
     <div id="calendar">
-      <h1 className="font-display font-bold text-2xl text-primary text-center">
+      <h2 className="font-display font-bold text-2xl text-primary text-center">
         Calendrier
-      </h1>
+      </h2>
       <div className="flex justify-center items-center pt-4">
         <Wrapper className="flex flex-col items-center rounded-lg overflow-hidden">
           <div>

@@ -8,9 +8,9 @@ type Props = {
 const FAQ: React.FC<Props> = ({ listQuestions }) => {
   return (
     <div id="faq" className="justify-between items-center">
-      <h1 className="font-display font-bold text-2xl text-primary text-center">
+      <h2 className="font-display font-bold text-2xl text-primary text-center">
         FAQ
-      </h1>
+      </h2>
       <div className="flex flex-col items-center space-y-1 px-2 pb-1 mt-4 space-y-3">
         {listQuestions.map(({ answer, question }, index) => (
           <RowQuestion

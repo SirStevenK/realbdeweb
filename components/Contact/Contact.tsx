@@ -47,9 +47,9 @@ const Contact: React.FC = () => {
 
   return (
     <div id="contact" className="flex flex-col items-center pt-2 pb-6 px-3">
-      <h1 className="font-display font-bold text-2xl text-primary text-center">
+      <h2 className="font-display font-bold text-2xl text-primary text-center">
         Contact
-      </h1>
+      </h2>
       <Wrapper
         className="flex flex-col space-y-2 mt-4"
         onSubmit={(event) => {
