@@ -26,7 +26,7 @@ const Testimonial: React.FC<Props> = ({
         <p className="pr-2 font-body text-sm md:text-base">{content}</p>
       </div>
       <div className="flex justify-center items-center p-2 bg-primary bg-opacity-25">
-        <div className="w-[64px]">
+        <div className="h-[64px]">
           <Image
             className="rounded-full overflow-hidden"
             src={image}
