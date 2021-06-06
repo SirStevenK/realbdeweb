@@ -26,13 +26,15 @@ const Testimonial: React.FC<Props> = ({
         <p className="pr-2 font-body text-sm md:text-base">{content}</p>
       </div>
       <div className="flex justify-center items-center p-2 bg-primary bg-opacity-25">
-        <Image
-          className="rounded-full overflow-hidden"
-          src={image}
-          alt=""
-          height={64}
-          width={64}
-        />
+        <div className="w-[64px]">
+          <Image
+            className="rounded-full overflow-hidden"
+            src={image}
+            alt=""
+            height={64}
+            width={64}
+          />
+        </div>
         <div className="ml-4">
           <span className="block text-primary font-display font-bold">
             {firstname} <span className="uppercase">{lastname}</span>
