@@ -11,7 +11,7 @@ const FAQ: React.FC<Props> = ({ listQuestions }) => {
       <h2 className="font-display font-bold text-2xl text-primary text-center">
         FAQ
       </h2>
-      <div className="flex flex-col items-center space-y-1 px-2 pb-1 mt-4 space-y-3">
+      <div className="flex flex-col items-center px-2 pb-1 mt-4 space-y-3">
         {listQuestions.map(({ answer, question }, index) => (
           <RowQuestion
             key={question + index}

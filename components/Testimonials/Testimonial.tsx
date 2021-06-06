@@ -8,7 +8,7 @@ type Props = {
 };
 
 const Testimonial: React.FC<Props> = ({
-  content: { content, description, firstname, lastname },
+  content: { content, description, image, firstname, lastname },
   hidden = false,
 }) => {
   return (
@@ -27,8 +27,8 @@ const Testimonial: React.FC<Props> = ({
       </div>
       <div className="flex justify-center items-center p-2 bg-primary bg-opacity-25">
         <Image
-          className="rounded-full overflow-hidden shadow-TESTIMONIAL-PIC"
-          src="/sampropic.png"
+          className="rounded-full overflow-hidden"
+          src={image}
           alt=""
           height={64}
           width={64}

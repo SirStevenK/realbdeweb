@@ -30,6 +30,7 @@ export type TestomonialElementProps = {
   _id?: string;
   content: string;
   description: string;
+  image: string;
   firstname: string;
   lastname: string;
 };

@@ -7,10 +7,11 @@ export const SchemaBodyUpdateTestimonial = {
   properties: {
     content: { type: "string" },
     description: { type: "string" },
+    image: { type: "string" },
     firstname: { type: "string" },
     lastname: { type: "string" },
   },
-  required: ["content", "description", "firstname", "lastname"],
+  required: ["content", "description", "image", "firstname", "lastname"],
 };
 
 export default function UpdateTestimonial(

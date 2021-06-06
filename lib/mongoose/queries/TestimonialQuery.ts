@@ -5,6 +5,7 @@ import Database from "../Database";
 const TestimonialSchema = new Schema({
   content: String,
   description: String,
+  image: String,
   firstname: String,
   lastname: String,
 });
@@ -58,6 +59,7 @@ class TestimonialQuery {
     const document = await this.model.findByIdAndUpdate(testimonial._id, {
       content: testimonial.content,
       description: testimonial.description,
+      image: testimonial.image,
       firstname: testimonial.firstname,
       lastname: testimonial.lastname,
     });

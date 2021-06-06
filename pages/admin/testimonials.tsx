@@ -1,17 +1,23 @@
 import { NextPage } from "next";
 import { NextSeo } from "next-seo";
-import MainDisplay from "@/components/MainDisplay/MainDisplay";
 import { NavChoices } from "./index";
-import { useCallback, useEffect, useMemo, useState } from "react";
-import Button from "@/components/Button/Button";
-import { TestomonialElementProps } from "@/types/utils";
+import { ChangeEvent, useCallback, useEffect, useMemo, useState } from "react";
 import Select from "react-select";
+import Button from "@/components/Button/Button";
+import MainDisplay from "@/components/MainDisplay/MainDisplay";
+import { TestomonialElementProps } from "@/types/utils";
 import InputText from "@/components/InputText/InputText";
 import TextArea from "@/components/TextArea/TextArea";
 import SelectStyles from "@/components/Select/SelectStyle";
 import axios from "axios";
 import ProtectedPage from "@/components/Admin/ProtectedPage";
 import { Plus, Save, Trash } from "@/components/icons";
+import Image from "@/components/Image/Image";
+import ClientUploadFile from "@/lib/aws/ClientUploadFile";
+import colors from "@/styles/colors.json";
+import { FadeLoader } from "react-spinners";
+
+const prefixImage = process.env.NEXT_PUBLIC_IMAGE_PREFIX as string;
 
 const TestimonialsPage: NextPage = () => {
   const [selectedTestimonial, setSelectedTestimonial] = useState("");
@@ -19,8 +25,12 @@ const TestimonialsPage: NextPage = () => {
     TestomonialElementProps[]
   >([]);
 
+  const [imageLoading, setImageLoading] = useState(false);
+  const [imageUploading, setImageUploading] = useState(false);
+
   const [valueInputContent, setValueInputContent] = useState("");
   const [valueInputDescription, setValueInputDescription] = useState("");
+  const [valueInputImage, setValueInputImage] = useState("");
   const [valueInputFirstName, setValueInputFirstName] = useState("");
   const [valueInputLastName, setValueInputLastName] = useState("");
 
@@ -28,12 +38,14 @@ const TestimonialsPage: NextPage = () => {
     () => ({
       content: valueInputContent,
       description: valueInputDescription,
+      image: valueInputImage,
       firstname: valueInputFirstName,
       lastname: valueInputLastName,
     }),
     [
       valueInputContent,
       valueInputDescription,
+      valueInputImage,
       valueInputFirstName,
       valueInputLastName,
     ]
@@ -102,6 +114,19 @@ const TestimonialsPage: NextPage = () => {
     }
   }, [selectedTestimonial, getTestimonials, resetSelectedTestimonial]);
 
+  const uploadByFile = useCallback((file: File) => {
+    setImageUploading(true);
+    ClientUploadFile(file)
+      .then(({ success, file }) => {
+        if (success === 1 && file) {
+          setValueInputImage(file.url.substring(prefixImage.length));
+          setImageLoading(true);
+        } else throw "err";
+      })
+      .catch(() => alert("L'image n'a pas pu être chargée"))
+      .then(() => setImageUploading(false));
+  }, []);
+
   useEffect(() => {
     getTestimonials();
   }, [getTestimonials]);
@@ -110,15 +135,17 @@ const TestimonialsPage: NextPage = () => {
     if (selectedTestimonial === "") {
       setValueInputContent("");
       setValueInputDescription("");
+      setValueInputImage("");
       setValueInputFirstName("");
       setValueInputLastName("");
     } else {
-      const { content, description, firstname, lastname } =
+      const { content, description, image, firstname, lastname } =
         listTestimonials.find(
           ({ _id }) => _id === selectedTestimonial
         ) as TestomonialElementProps;
       setValueInputContent(content);
       setValueInputDescription(description);
+      setValueInputImage(image);
       setValueInputFirstName(firstname);
       setValueInputLastName(lastname);
     }
@@ -155,6 +182,51 @@ const TestimonialsPage: NextPage = () => {
                   selectedTestimonial === "" ? "Création" : "Modification"
                 } d'un témoignage`}
               </h2>
+              <div className="flex items-center space-x-4 justify-center">
+                <FadeLoader
+                  color={colors.secondary}
+                  loading={imageLoading}
+                  css="height: 64px; width: 64px;"
+                />
+                <Image
+                  className="rounded-full overflow-hidden"
+                  src={valueInputImage}
+                  height={64}
+                  width={64}
+                  hidden={valueInputImage.length === 0 || imageLoading}
+                  onLoad={() => setImageLoading(false)}
+                />
+                <div className="flex space-x-4">
+                  <div>
+                    <label
+                      htmlFor="imagefile"
+                      className="block bg-primary text-light py-3 px-4 cursor-pointer font-body font-bold rounded-lg shadow-TESTIMONIAL-PIC select-none"
+                    >
+                      {valueInputImage
+                        ? "Changer l'image"
+                        : "Choisir une image"}
+                    </label>
+                    <input
+                      type="file"
+                      id="imagefile"
+                      className="opacity-0 absolute"
+                      disabled={imageUploading}
+                      value=""
+                      onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                        if (e.target.files) uploadByFile(e.target.files[0]);
+                      }}
+                      style={{ zIndex: -1 }}
+                    />
+                  </div>
+                  <input
+                    className="bg-warning text-light py-3 px-4 cursor-pointer font-body font-bold rounded-lg shadow-TESTIMONIAL-PIC select-none"
+                    type="button"
+                    hidden={!valueInputImage}
+                    value="Enlever l'image"
+                    onClick={() => setValueInputImage("")}
+                  />
+                </div>
+              </div>
               <div className="flex space-x-4">
                 <InputText
                   type="text"

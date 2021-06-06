@@ -1,12 +1,10 @@
 import MobileContext from "@/contexts/MobileContext";
 import mq, { breakpoints } from "@/styles/mq";
 import styled from "@emotion/styled";
-import Link from "next/link";
 import Scroll from "react-scroll";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { NavChoiceProps } from "@/types/utils";
 import NavChoice from "./NavChoice";
-import { Discord, Facebook, Instagram } from "@/components/icons";
 import Image from "@/components/Image/Image";
 import RowSocials from "../Social/RowSocials";
 import PopinNewsletterContext from "@/contexts/PopinNewsletterContext";
@@ -80,6 +78,7 @@ const NavSide: React.FC<Props> = ({
         duration: 1500,
         delay: innerWidth < breakpoints[1] ? 300 : 0,
         smooth: true,
+        offset: -20,
         containerId: innerWidth < breakpoints[1] ? "main" : "",
       });
       setElementScrollTo("");
