@@ -1,6 +1,6 @@
 import { QuoteLeft } from "@/components/icons";
-import { TestomonialElementProps } from "@/types/utils";
 import Image from "@/components/Image/Image";
+import { TestomonialElementProps } from "@/types/utils";
 
 type Props = {
   content: TestomonialElementProps;

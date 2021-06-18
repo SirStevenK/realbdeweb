@@ -1,15 +1,15 @@
+import ProtectedPage from "@/components/Admin/ProtectedPage";
+import { Trash } from "@/components/icons";
+import InputAdmin from "@/components/InputAdmin/InputAdmin";
+import MainDisplay from "@/components/MainDisplay/MainDisplay";
+import { useUser } from "@/hooks/UseUser";
+import ValidateEmail from "@/lib/scripts/ValidateEmail";
+import { AdministratorElementProps } from "@/types/utils";
+import axios from "axios";
 import { NextPage } from "next";
 import { NextSeo } from "next-seo";
-import MainDisplay from "@/components/MainDisplay/MainDisplay";
-import { NavChoices } from "./index";
 import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
-import axios from "axios";
-import ProtectedPage from "@/components/Admin/ProtectedPage";
-import { AdministratorElementProps } from "@/types/utils";
-import ValidateEmail from "@/lib/scripts/ValidateEmail";
-import InputAdmin from "@/components/InputAdmin/InputAdmin";
-import { Trash } from "@/components/icons";
-import { useUser } from "@/hooks/UseUser";
+import { NavChoices } from "./index";
 
 const UserPage: NextPage = () => {
   const { user } = useUser();

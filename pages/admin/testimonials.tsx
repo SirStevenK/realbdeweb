@@ -1,21 +1,21 @@
-import { NextPage } from "next";
-import { NextSeo } from "next-seo";
-import { NavChoices } from "./index";
-import { ChangeEvent, useCallback, useEffect, useMemo, useState } from "react";
-import Select from "react-select";
-import Button from "@/components/Button/Button";
-import MainDisplay from "@/components/MainDisplay/MainDisplay";
-import { TestomonialElementProps } from "@/types/utils";
-import InputText from "@/components/InputText/InputText";
-import TextArea from "@/components/TextArea/TextArea";
-import SelectStyles from "@/components/Select/SelectStyle";
-import axios from "axios";
 import ProtectedPage from "@/components/Admin/ProtectedPage";
+import Button from "@/components/Button/Button";
 import { Plus, Save, Trash } from "@/components/icons";
 import Image from "@/components/Image/Image";
+import InputText from "@/components/InputText/InputText";
+import MainDisplay from "@/components/MainDisplay/MainDisplay";
+import SelectStyles from "@/components/Select/SelectStyle";
+import TextArea from "@/components/TextArea/TextArea";
 import ClientUploadFile from "@/lib/aws/ClientUploadFile";
 import colors from "@/styles/colors.json";
+import { TestomonialElementProps } from "@/types/utils";
+import axios from "axios";
+import { NextPage } from "next";
+import { NextSeo } from "next-seo";
+import { ChangeEvent, useCallback, useEffect, useMemo, useState } from "react";
+import Select from "react-select";
 import { FadeLoader } from "react-spinners";
+import { NavChoices } from "./index";
 
 const prefixImage = process.env.NEXT_PUBLIC_IMAGE_PREFIX as string;
 
@@ -191,6 +191,7 @@ const TestimonialsPage: NextPage = () => {
                 <Image
                   className="rounded-full overflow-hidden"
                   src={valueInputImage}
+                  alt=""
                   height={64}
                   width={64}
                   hidden={valueInputImage.length === 0 || imageLoading}

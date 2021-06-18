@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
 import colors from "@/styles/colors.json";
 import fontFamily from "@/styles/fontFamily.json";
+import styled from "@emotion/styled";
 
 type Props = {
   colorBorder?: string;

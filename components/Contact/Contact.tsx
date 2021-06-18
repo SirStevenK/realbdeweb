@@ -1,12 +1,12 @@
-import styled from "@emotion/styled";
-import InputText from "@/components/InputText/InputText";
-import TextArea from "@/components/TextArea/TextArea";
 import Button from "@/components/Button/Button";
 import { PaperPlane } from "@/components/icons";
-import colors from "@/styles/colors.json";
-import { useCallback, useState } from "react";
-import axios from "axios";
+import InputText from "@/components/InputText/InputText";
+import TextArea from "@/components/TextArea/TextArea";
 import ValidateEmail from "@/lib/scripts/ValidateEmail";
+import colors from "@/styles/colors.json";
+import styled from "@emotion/styled";
+import axios from "axios";
+import { useCallback, useState } from "react";
 
 const Wrapper = styled.form({
   width: "100%",

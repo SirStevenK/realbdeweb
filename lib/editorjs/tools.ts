@@ -1,13 +1,12 @@
 // import Embed from "@editorjs/embed";
 // import Table from "@editorjs/table";
-import Paragraph from "@editorjs/paragraph";
-import List from "@editorjs/list";
-import Image from "@editorjs/image";
-import Header from "@editorjs/header";
-import Marker from "@editorjs/marker";
-
 import ClientUploadFile from "@/lib/aws/ClientUploadFile";
 import ClientUploadFileByUrl from "@/lib/aws/ClientUploadFileByUrl";
+import Header from "@editorjs/header";
+import Image from "@editorjs/image";
+import List from "@editorjs/list";
+import Marker from "@editorjs/marker";
+import Paragraph from "@editorjs/paragraph";
 
 export const EDITOR_JS_TOOLS = {
   // embed: {

@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { Discord, Facebook, Instagram } from "@/components/icons";
+import Link from "next/link";
 
 type Props = {
   color?: string;

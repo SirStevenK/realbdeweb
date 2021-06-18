@@ -1,10 +1,9 @@
+import { CheckCircle, Times } from "@/components/icons";
+import RowSocials from "@/components/Social/RowSocials";
 import PopinNewsletterContext from "@/contexts/PopinNewsletterContext";
 import ValidateEmail from "@/lib/scripts/ValidateEmail";
 import axios from "axios";
 import { useCallback, useContext, useState } from "react";
-import { CheckCircle } from "../icons";
-import { Times } from "../icons";
-import RowSocials from "../Social/RowSocials";
 
 const PopinNewsletter: React.FC = () => {
   const [email, setEmail] = useState("");

@@ -1,20 +1,20 @@
-import { GetServerSideProps, NextPage } from "next";
-import { NextSeo } from "next-seo";
-import FAQ from "@/components/FAQ/FAQ";
 import Calendar from "@/components/Calendar/Calendar";
 import Contact from "@/components/Contact/Contact";
+import FAQ from "@/components/FAQ/FAQ";
+import Introduction from "@/components/Introduction/Introduction";
 import MainDisplay from "@/components/MainDisplay/MainDisplay";
-import { MainContentProps, NavChoiceProps } from "@/types/utils";
 import PopinNewsletter from "@/components/Newsletter/PopinNewsletter";
 import Testimonials from "@/components/Testimonials/Testimonials";
-import Introduction from "@/components/Introduction/Introduction";
+import PopinNewsletterContext from "@/contexts/PopinNewsletterContext";
+import RemoveObjectID from "@/lib/scripts/RemoveObjectID";
 import GetEvents from "@/lib/services/event/GetEvents";
 import GetIntroduction from "@/lib/services/introduction/GetIntroduction";
 import GetQuestions from "@/lib/services/question/GetQuestions";
 import GetTestimonials from "@/lib/services/testimonial/GetTestimonials";
-import RemoveObjectID from "@/lib/scripts/RemoveObjectID";
+import { MainContentProps, NavChoiceProps } from "@/types/utils";
+import { GetServerSideProps, NextPage } from "next";
+import { NextSeo } from "next-seo";
 import { useState } from "react";
-import PopinNewsletterContext from "@/contexts/PopinNewsletterContext";
 
 const NavChoices: NavChoiceProps[] = [
   { type: "scroll", label: "Présentation", value: "intro" },

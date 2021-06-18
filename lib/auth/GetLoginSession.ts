@@ -1,7 +1,7 @@
+import GetTokenCookie from "@/lib/cookie/GetTokenCookie";
 import { UserSessionProps } from "@/types/user";
 import Iron from "@hapi/iron";
 import { NextApiRequest } from "next";
-import GetTokenCookie from "../cookie/GetTokenCookie";
 
 export default async function GetLoginSession(
   req: NextApiRequest

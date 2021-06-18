@@ -1,8 +1,8 @@
-import { useEffect } from "react";
+import { UserSessionProps } from "@/types/user";
 import Router from "next/router";
+import { useEffect } from "react";
 import useSWR from "swr";
 import { Fetcher } from "swr/dist/types";
-import { UserSessionProps } from "@/types/user";
 
 const fetcher: Fetcher<Record<string, unknown>> = (url: string) =>
   fetch(url)

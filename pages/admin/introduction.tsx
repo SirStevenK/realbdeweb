@@ -1,13 +1,13 @@
+import ProtectedPage from "@/components/Admin/ProtectedPage";
+import Button from "@/components/Button/Button";
+import { Save } from "@/components/icons";
+import MainDisplay from "@/components/MainDisplay/MainDisplay";
+import TextArea from "@/components/TextArea/TextArea";
+import axios from "axios";
 import { NextPage } from "next";
 import { NextSeo } from "next-seo";
-import MainDisplay from "@/components/MainDisplay/MainDisplay";
-import { NavChoices } from "./index";
-import TextArea from "@/components/TextArea/TextArea";
 import { useCallback, useEffect, useState } from "react";
-import Button from "@/components/Button/Button";
-import axios from "axios";
-import ProtectedPage from "@/components/Admin/ProtectedPage";
-import { Save } from "@/components/icons";
+import { NavChoices } from "./index";
 
 const IntroductionPage: NextPage = () => {
   const [currentValue, setCurrentValue] = useState("");

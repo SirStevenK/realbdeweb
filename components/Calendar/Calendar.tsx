@@ -1,11 +1,11 @@
-import styled from "@emotion/styled";
+import { Check } from "@/components/icons";
 import colors from "@/styles/colors.json";
 import fontFamily from "@/styles/fontFamily.json";
-import { CalendarElementProps } from "@/types/utils";
-import { listMonthsFR } from "@/types/date";
-import { Fragment, useMemo } from "react";
 import mq from "@/styles/mq";
-import { Check } from "@/components/icons";
+import { listMonthsFR } from "@/types/date";
+import { CalendarElementProps } from "@/types/utils";
+import styled from "@emotion/styled";
+import { Fragment, useMemo } from "react";
 
 const Wrapper = styled.div({
   maxWidth: "800px",

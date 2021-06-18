@@ -1,7 +1,7 @@
+import SetTokenCookie from "@/lib/cookie/SetTokenCookie";
 import Iron from "@hapi/iron";
 import { MagicUserMetadata } from "@magic-sdk/admin";
 import { NextApiResponse } from "next";
-import SetTokenCookie from "../cookie/SetTokenCookie";
 
 const MAX_AGE = Number(process.env.MAX_AGE);
 

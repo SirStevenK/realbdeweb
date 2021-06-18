@@ -1,6 +1,6 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import GetLoginSession from "@/lib/auth/GetLoginSession";
 import { UserSessionProps } from "@/types/user";
+import { NextApiRequest, NextApiResponse } from "next";
 
 type InfoUserType = {
   session: UserSessionProps | null;

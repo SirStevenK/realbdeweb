@@ -1,12 +1,9 @@
 import GetLoginSession from "@/lib/auth/GetLoginSession";
 import RemoveTokenCookie from "@/lib/cookie/RemoveTokenCookie";
 import { magic } from "@/lib/magic/magic";
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextApiHandler } from "next";
 
-export default async (
-  req: NextApiRequest,
-  res: NextApiResponse
-): Promise<void> => {
+const route: NextApiHandler = async (req, res) => {
   try {
     const session = await GetLoginSession(req);
 
@@ -21,3 +18,5 @@ export default async (
   res.writeHead(302, { Location: "/" });
   res.end();
 };
+
+export default route;

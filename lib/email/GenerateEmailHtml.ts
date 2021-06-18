@@ -1,5 +1,5 @@
+import ConvertBlockToMJML from "@/lib/editorjs/ConvertBlockToMJML";
 import { OutputBlockData } from "@editorjs/editorjs";
-import ConvertBlockToMJML from "../editorjs/ConvertBlockToMJML";
 
 function GenerateHead() {
   return `<mj-head>

@@ -1,8 +1,8 @@
 import { OutputBlockData } from "@editorjs/editorjs";
-import GetParagraphToMJML from "./GetParagraphToMJML";
 import GetHeadingToMJML from "./GetHeadingToMJML";
 import GetImageToMJML from "./GetImageToMJML";
 import GetListToMJML from "./GetListToMJML";
+import GetParagraphToMJML from "./GetParagraphToMJML";
 
 export default function ConvertBlockToMJML(block: OutputBlockData): string {
   switch (block.type) {

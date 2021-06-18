@@ -1,16 +1,16 @@
-import { GetServerSideProps, NextPage } from "next";
-import { NextSeo } from "next-seo";
 import MainDisplay from "@/components/MainDisplay/MainDisplay";
+import PopinNewsletter from "@/components/Newsletter/PopinNewsletter";
+import Testimonial from "@/components/Testimonials/Testimonial";
+import PopinNewsletterContext from "@/contexts/PopinNewsletterContext";
+import RemoveObjectID from "@/lib/scripts/RemoveObjectID";
+import GetTestimonials from "@/lib/services/testimonial/GetTestimonials";
 import {
   MainContentProps,
   NavChoiceProps,
   TestomonialElementProps,
 } from "@/types/utils";
-import RemoveObjectID from "@/lib/scripts/RemoveObjectID";
-import GetTestimonials from "@/lib/services/testimonial/GetTestimonials";
-import Testimonial from "@/components/Testimonials/Testimonial";
-import PopinNewsletter from "@/components/Newsletter/PopinNewsletter";
-import PopinNewsletterContext from "@/contexts/PopinNewsletterContext";
+import { GetServerSideProps, NextPage } from "next";
+import { NextSeo } from "next-seo";
 import { useState } from "react";
 
 export const NavChoices: NavChoiceProps[] = [

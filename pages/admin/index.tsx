@@ -1,10 +1,10 @@
+import LoggedIn from "@/components/Admin/LoggedIn";
+import Login from "@/components/Admin/Login";
+import MainDisplay from "@/components/MainDisplay/MainDisplay";
+import { useUser } from "@/hooks/UseUser";
+import { NavChoiceProps } from "@/types/utils";
 import { NextPage } from "next";
 import { NextSeo } from "next-seo";
-import MainDisplay from "@/components/MainDisplay/MainDisplay";
-import { NavChoiceProps } from "@/types/utils";
-import Login from "@/components/Admin/Login";
-import { useUser } from "@/hooks/UseUser";
-import LoggedIn from "@/components/Admin/LoggedIn";
 
 export const NavChoices: NavChoiceProps[] = [
   { type: "link", label: "Présentation", value: "/admin/introduction" },

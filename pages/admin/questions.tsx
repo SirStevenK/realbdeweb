@@ -1,17 +1,17 @@
+import ProtectedPage from "@/components/Admin/ProtectedPage";
+import Button from "@/components/Button/Button";
+import { Plus, Save, Trash } from "@/components/icons";
+import InputText from "@/components/InputText/InputText";
+import MainDisplay from "@/components/MainDisplay/MainDisplay";
+import SelectStyles from "@/components/Select/SelectStyle";
+import TextArea from "@/components/TextArea/TextArea";
+import { QuestionElementProps } from "@/types/utils";
+import axios from "axios";
 import { NextPage } from "next";
 import { NextSeo } from "next-seo";
-import MainDisplay from "@/components/MainDisplay/MainDisplay";
-import { NavChoices } from "./index";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import Button from "@/components/Button/Button";
-import { QuestionElementProps } from "@/types/utils";
 import Select from "react-select";
-import InputText from "@/components/InputText/InputText";
-import TextArea from "@/components/TextArea/TextArea";
-import SelectStyles from "@/components/Select/SelectStyle";
-import axios from "axios";
-import ProtectedPage from "@/components/Admin/ProtectedPage";
-import { Plus, Save, Trash } from "@/components/icons";
+import { NavChoices } from "./index";
 
 const QuestionsPage: NextPage = () => {
   const [selectedQuestion, setSelectedQuestion] = useState("");

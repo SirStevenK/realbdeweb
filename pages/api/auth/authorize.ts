@@ -1,11 +1,8 @@
 import CheckSchema from "@/lib/ajv/CheckSchema";
 import FindAdministrator from "@/lib/services/administrator/FindAdministrator";
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextApiHandler } from "next";
 
-export default async (
-  req: NextApiRequest,
-  res: NextApiResponse
-): Promise<void> => {
+const route: NextApiHandler = async (req, res) => {
   const { method } = req;
 
   try {
@@ -42,3 +39,5 @@ export const PostSchemaBody = {
   },
   required: ["email"],
 };
+
+export default route;

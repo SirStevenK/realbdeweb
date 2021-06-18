@@ -2,12 +2,9 @@ import CheckSchema from "@/lib/ajv/CheckSchema";
 import SetLoginSession from "@/lib/auth/SetLoginSession";
 import { magic } from "@/lib/magic/magic";
 import AdministratorQuery from "@/lib/mongoose/queries/AdministratorQuery";
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextApiHandler } from "next";
 
-export default async (
-  req: NextApiRequest,
-  res: NextApiResponse
-): Promise<void> => {
+const route: NextApiHandler = async (req, res) => {
   const { method } = req;
 
   try {
@@ -54,3 +51,5 @@ export const PostSchemaBody = {
   },
   required: ["email"],
 };
+
+export default route;

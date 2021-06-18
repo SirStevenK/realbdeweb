@@ -1,8 +1,8 @@
-import EditorJS from "react-editor-js";
-import { API, BlockAPI, OutputData } from "@editorjs/editorjs";
-import styled from "@emotion/styled";
 import { EDITOR_JS_TOOLS } from "@/lib/editorjs/tools";
 import colors from "@/styles/colors.json";
+import { API, BlockAPI, OutputData } from "@editorjs/editorjs";
+import styled from "@emotion/styled";
+import EditorJS from "react-editor-js";
 
 type Props = {
   data: OutputData;

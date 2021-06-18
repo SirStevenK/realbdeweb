@@ -1,9 +1,9 @@
-import styled from "@emotion/styled";
-import colors from "@/styles/colors.json";
-import { useContext } from "react";
-import MobileContext from "@/contexts/MobileContext";
 import { Bars } from "@/components/icons";
 import Image from "@/components/Image/Image";
+import MobileContext from "@/contexts/MobileContext";
+import colors from "@/styles/colors.json";
+import styled from "@emotion/styled";
+import { useContext } from "react";
 
 const IconMenu = styled.div({
   color: colors.white,
@@ -20,7 +20,13 @@ const MobileHeader: React.FC = () => {
         <Bars />
       </IconMenu>
       <div className="pt-2 pb-3 cursor-pointer flex justify-center w-full">
-        <Image src="/logowebbde.png" quality={100} width={192} height={36} />
+        <Image
+          src="/logowebbde.png"
+          quality={100}
+          width={192}
+          height={36}
+          alt=""
+        />
       </div>
     </div>
   );

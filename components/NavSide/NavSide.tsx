@@ -1,13 +1,13 @@
-import MobileContext from "@/contexts/MobileContext";
-import mq, { breakpoints } from "@/styles/mq";
-import styled from "@emotion/styled";
-import Scroll from "react-scroll";
-import { useCallback, useContext, useEffect, useState } from "react";
-import { NavChoiceProps } from "@/types/utils";
-import NavChoice from "./NavChoice";
 import Image from "@/components/Image/Image";
-import RowSocials from "../Social/RowSocials";
+import MobileContext from "@/contexts/MobileContext";
 import PopinNewsletterContext from "@/contexts/PopinNewsletterContext";
+import mq, { breakpoints } from "@/styles/mq";
+import { NavChoiceProps } from "@/types/utils";
+import styled from "@emotion/styled";
+import { useCallback, useContext, useEffect, useState } from "react";
+import Scroll from "react-scroll";
+import RowSocials from "../Social/RowSocials";
+import NavChoice from "./NavChoice";
 
 const Wrapper = styled.div({
   width: "250px",

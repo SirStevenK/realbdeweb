@@ -1,6 +1,6 @@
-import "tailwindcss/tailwind.css";
 import ThemeProvider from "@/providers/ThemeProvider";
 import { AppProps } from "next/app";
+import "tailwindcss/tailwind.css";
 
 const CustomApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (

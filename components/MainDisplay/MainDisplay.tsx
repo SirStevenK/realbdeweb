@@ -1,9 +1,9 @@
+import MobileHeader from "@/components/MobileMenu/MobileHeader";
+import NavSide from "@/components/NavSide/NavSide";
 import MobileContext from "@/contexts/MobileContext";
 import colors from "@/styles/colors.json";
 import { NavChoiceProps } from "@/types/utils";
 import { useCallback, useEffect, useState } from "react";
-import MobileHeader from "@/components/MobileMenu/MobileHeader";
-import NavSide from "@/components/NavSide/NavSide";
 
 type Props = {
   background?: string;
